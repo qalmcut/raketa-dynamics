@@ -1,369 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Explore the Raketa Dynamics hanger collection."
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Raketa Dynamics hanger collection.">
     <title>Hanger | Raketa Dynamics</title>
-
     <link rel="stylesheet" href="style.css">
-
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
-
-
 <body>
 
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header class="site-header">
-
-    <div class="nav-container">
-
-
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <img
-                src="logo.png"
-                alt="Raketa Dynamics"
-            >
-
-        </a>
-
-
-        <!-- MAIN NAVIGATION -->
-
-        <nav
-            class="site-navigation"
-            aria-label="Main navigation"
-        >
-
-
-            <!-- HOME -->
-
-            <a
-                href="index.html"
-                class="site-navigation-link"
-            >
-                HOME
+    <!-- GLOBAL HEADER -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Raketa Dynamics">
             </a>
 
+            <nav class="site-navigation" aria-label="Main navigation">
+                <a href="index.html" class="site-navigation-link">HOME</a>
 
-            <!-- =================================================
-                 SUPPLY
-            ================================================== -->
-
-            <div class="site-navigation-item site-navigation-supply">
-
-                <a
-                    href="supply.html"
-                    class="site-navigation-link"
-                >
-                    SUPPLY
-                </a>
-
-
-                <!-- SUPPLY DROPDOWN -->
-
-                <div class="supply-dropdown">
-
-                    <a
-                        href="models.html"
-                        class="dropdown-navigation-link"
-                    >
-                        MODELS
-                    </a>
-
-                    <a
-                        href="armoury.html"
-                        class="dropdown-navigation-link"
-                    >
-                        ARMOURY
-                    </a>
-
-                    <a
-                        href="hanger.html"
-                        class="dropdown-navigation-link"
-                    >
-                        HANGER
-                    </a>
-
+                <div class="site-navigation-item site-navigation-supply">
+                    <a href="supply.html" class="site-navigation-link active">SUPPLY</a>
+                    <div class="supply-dropdown">
+                        <a href="models.html" class="dropdown-navigation-link">MODELS</a>
+                        <a href="armoury.html" class="dropdown-navigation-link">ARMOURY</a>
+                        <a href="hanger.html" class="dropdown-navigation-link">HANGER</a>
+                    </div>
                 </div>
 
-            </div>
+                <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
 
-
-            <!-- =================================================
-                 COLLECTION ARCHIVE
-            ================================================== -->
-
-            <a
-                href="archive.html"
-                class="site-navigation-link"
-            >
-                COLLECTION ARCHIVE
-            </a>
-
-
-            <!-- =================================================
-                 UPDATES
-            ================================================== -->
-
-            <div class="site-navigation-item site-navigation-updates">
-
-                <a
-                    href="releases.html"
-                    class="site-navigation-link"
-                >
-                    UPDATES
-                </a>
-
-
-                <!-- UPDATES DROPDOWN -->
-
-                <div class="updates-dropdown">
-
-                    <a
-                        href="releases.html"
-                        class="dropdown-navigation-link"
-                    >
-                        RELEASES
-                    </a>
-
+                <div class="site-navigation-item site-navigation-updates">
+                    <a href="releases.html" class="site-navigation-link">UPDATES</a>
+                    <div class="updates-dropdown">
+                        <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                        <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
+                        <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
+                    </div>
                 </div>
 
-            </div>
+                <a href="lines.html" class="site-navigation-link">LINES</a>
 
-
-            <!-- =================================================
-                 ABOUT
-            ================================================== -->
-
-            <div class="site-navigation-item site-navigation-about">
-
-                <a
-                    href="about.html"
-                    class="site-navigation-link"
-                >
-                    ABOUT
-                </a>
-
-
-                <!-- ABOUT DROPDOWN -->
-
-                <div class="about-dropdown">
-
-                    <a
-                        href="contact.html"
-                        class="dropdown-navigation-link"
-                    >
-                        CONTACT
-                    </a>
-
-                </div>
-
-            </div>
-
-
-        </nav>
-
-    </div>
-
-</header>
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main>
-
-
-    <!-- =====================================================
-         PAGE HERO
-    ====================================================== -->
-
-    <section class="page-hero">
-
-        <div class="container">
-
-            <span class="section-kicker">
-                RAKETA DYNAMICS / HANGER
-            </span>
-
-            <h1>
-                Hanger.
-            </h1>
-
-            <p>
-                Explore the Raketa Dynamics hanger collection.
-            </p>
-
+                <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                    CART (<span id="cart-counter">0</span>)
+                </button>
+            </nav>
         </div>
+    </header>
 
-    </section>
+    <main>
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="page-hero-slideshow">
+                <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+                <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
+            </div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <h1>Hanger</h1>
+                <p class="large-text">Full-scale cockpit panels, cockpit sections, and simulator interior components.</p>
+            </div>
+            <div class="page-hero-dots">
+                <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+                <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
+            </div>
+        </section>
 
+        <!-- HANGER SHOP -->
+        <section class="supply-shop-section">
+            <div class="container">
+                
+                <!-- TOP CONTROLS: 3 TABS & FILTERS -->
+                <div class="archive-control-bar">
+                    <div class="archive-tabs-wrapper">
+                        <a href="models.html" class="archive-tab-btn">
+                            <span class="tab-code">01</span>
+                            <span class="tab-name">MODELS</span>
+                        </a>
+                        <a href="armoury.html" class="archive-tab-btn">
+                            <span class="tab-code">02</span>
+                            <span class="tab-name">ARMOURY</span>
+                        </a>
+                        <a href="hanger.html" class="archive-tab-btn is-active">
+                            <span class="tab-code">03</span>
+                            <span class="tab-name">HANGER</span>
+                        </a>
+                    </div>
 
-    <!-- =====================================================
-         HANGER SECTION
-    ====================================================== -->
+                    <div class="archive-filter-panel">
+                        <div class="filter-group">
+                            <label for="filter-country">COUNTRY</label>
+                            <select id="filter-country" class="archive-select">
+                                <option value="all">ALL COUNTRIES</option>
+                                <option value="india">INDIA</option>
+                                <option value="russia">RUSSIA</option>
+                            </select>
+                        </div>
 
-    <section class="models-section">
+                        <div class="filter-group">
+                            <label for="filter-line">LINE</label>
+                            <select id="filter-line" class="archive-select">
+                                <option value="all">ALL LINES</option>
+                                <option value="gold">GOLD LINE</option>
+                                <option value="white">WHITE LINE</option>
+                                <option value="black">BLACK LINE</option>
+                            </select>
+                        </div>
 
-        <div class="container">
-
-
-            <!-- =================================================
-                 AIRCRAFT
-            ================================================== -->
-
-            <div
-                class="model-branch"
-                id="aircraft"
-            >
-
-                <div class="model-branch-title">
-
-                    <h2>
-                        Aircraft
-                    </h2>
-
+                        <button id="filter-reset-btn" class="archive-reset-btn" type="button" onclick="resetFilters()">RESET</button>
+                    </div>
                 </div>
 
-
-                <div class="model-list">
-
-
-                    <!-- =========================================
-                         PLACEHOLDER PRODUCT
-                    ========================================== -->
-
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-
-                        <div class="model-item-header">
-
-                            <h3 class="model-item-title">
-                                Hanger Product
-                            </h3>
-
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-
-                        </div>
-
-
-                        <div class="model-gallery">
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="Hanger product work in progress"
-                                >
-
+                <!-- 3-COLUMN PRODUCT GRID -->
+                <div class="shop-product-grid">
+                    
+                    <div class="shop-product-card" data-country="india" data-line="white">
+                        <div class="product-line-stripe stripe-white"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="SU-30MKI Front IP"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-white">WHITE LINE</div>
+                            <h4 class="product-title">SU-30MKI Front Cockpit IP</h4>
+                            <p class="product-spec">Active Backlit Multi-Function Display Bezels</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£780.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('SU-30MKI Cockpit IP', 780.00, 'White Line')">ADD TO CART</button>
                             </div>
+                        </div>
+                    </div>
 
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="WIPwhite.png"
-                                    alt="Hanger product work in progress"
-                                >
-
+                    <div class="shop-product-card" data-country="russia" data-line="black">
+                        <div class="product-line-stripe stripe-black"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="SU-27 Left Console"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-black">BLACK LINE</div>
+                            <h4 class="product-title">SU-27 Throttle Console</h4>
+                            <p class="product-spec">Weighted Dual-Engine Tactical Quadrant Assembly</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£390.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('SU-27 Throttle Console', 390.00, 'Black Line')">ADD TO CART</button>
                             </div>
-
-
                         </div>
+                    </div>
 
-
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-
-
-                        <div class="model-item-content">
-
-                            <div class="model-item-description">
-
-                                <p>
-                                    Hanger product information
-                                    will be added here.
-                                </p>
-
-
-                                <a
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
-
+                    <div class="shop-product-card" data-country="india" data-line="gold">
+                        <div class="product-line-stripe stripe-gold"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="MI-17V5 Overhead Panel"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-gold">GOLD LINE</div>
+                            <h4 class="product-title">MI-17V5 Overhead Panel</h4>
+                            <p class="product-spec">Tactical Switchgear & Cockpit Lighting Module</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£310.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('MI-17V5 Overhead Panel', 310.00, 'Gold Line')">ADD TO CART</button>
                             </div>
-
                         </div>
-
-
-                    </article>
-
+                    </div>
 
                 </div>
 
             </div>
+        </section>
+    </main>
 
-
+    <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>ACQUISITION CART</h3>
+            <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
         </div>
-
-    </section>
-
-
-</main>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer class="site-footer">
-
-    <div class="container footer-bottom">
-
-        <span>
-            © 2026 Raketa Dynamics
-        </span>
-
-        <a href="index.html">
-            Home
-        </a>
-
+        <div id="cart-items" class="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+        </div>
     </div>
+    <div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
 
-</footer>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="brand footer-brand"><img src="logo.png" alt="Raketa Dynamics"></a>
+                <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="supply.html">Supply</a>
+                <a href="archive.html">Collection Archive</a>
+                <a href="releases.html">Releases</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="lines.html">Lines</a>
+            </div>
+            <div class="footer-contact">
+                <span>CONTACT</span>
+                <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>© 2026 Raketa Dynamics</span>
+            <span>Berkshire, United Kingdom</span>
+        </div>
+    </footer>
 
+    <script src="hero-slideshow.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        function applyFilters() {
+            const selectedCountry = document.getElementById('filter-country').value;
+            const selectedLine = document.getElementById('filter-line').value;
 
+            document.querySelectorAll('.shop-product-card').forEach(card => {
+                const cCountry = card.dataset.country;
+                const cLine = card.dataset.line;
+                const matchCountry = (selectedCountry === 'all' || selectedCountry === cCountry);
+                const matchLine = (selectedLine === 'all' || selectedLine === cLine);
+
+                card.style.display = (matchCountry && matchLine) ? 'flex' : 'none';
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-country').value = 'all';
+            document.getElementById('filter-line').value = 'all';
+            applyFilters();
+        }
+
+        document.getElementById('filter-country').addEventListener('change', applyFilters);
+        document.getElementById('filter-line').addEventListener('change', applyFilters);
+    </script>
 </body>
-
 </html>

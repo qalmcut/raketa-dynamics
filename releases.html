@@ -2,623 +2,245 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Latest Raketa Dynamics releases, announcements and work in progress."
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Latest Raketa Dynamics releases, announcements and work in progress.">
     <title>Raketa Dynamics | Updates</title>
-
     <link rel="stylesheet" href="style.css">
-
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-====================================================== -->
 
 <!-- =====================================================
      FIXED HEADER
 ====================================================== -->
-
 <header class="site-header">
-
     <div class="nav-container">
-
-
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <img
-                src="logo.png"
-                alt="Raketa Dynamics"
-            >
-
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="Raketa Dynamics">
         </a>
 
-
-        <!-- MAIN NAVIGATION -->
-
-        <nav
-            class="site-navigation"
-            aria-label="Main navigation"
-        >
-
-
-            <!-- HOME -->
-
-            <a
-                href="index.html"
-                class="site-navigation-link"
-            >
-                HOME
-            </a>
-
-
-            <!-- =================================================
-                 SUPPLY
-            ================================================== -->
+        <nav class="site-navigation" aria-label="Main navigation">
+            <a href="index.html" class="site-navigation-link">HOME</a>
 
             <div class="site-navigation-item site-navigation-supply">
-
-                <a
-                    href="supply.html"
-                    class="site-navigation-link"
-                >
-                    SUPPLY
-                </a>
-
-
-                <!-- SUPPLY DROPDOWN -->
-
+                <a href="supply.html" class="site-navigation-link">SUPPLY</a>
                 <div class="supply-dropdown">
-
-                    <a
-                        href="models.html"
-                        class="dropdown-navigation-link"
-                    >
-                        MODELS
-                    </a>
-
-                    <a
-                        href="armoury.html"
-                        class="dropdown-navigation-link"
-                    >
-                        ARMOURY
-                    </a>
-
-                    <a
-                        href="hanger.html"
-                        class="dropdown-navigation-link"
-                    >
-                        HANGER
-                    </a>
-
+                    <a href="models.html" class="dropdown-navigation-link">MODELS</a>
+                    <a href="armoury.html" class="dropdown-navigation-link">ARMOURY</a>
+                    <a href="hanger.html" class="dropdown-navigation-link">HANGER</a>
                 </div>
-
             </div>
 
-
-            <!-- =================================================
-                 COLLECTION ARCHIVE
-            ================================================== -->
-
-            <a
-                href="archive.html"
-                class="site-navigation-link"
-            >
-                COLLECTION ARCHIVE
-            </a>
-
-
-            <!-- =================================================
-                 UPDATES
-            ================================================== -->
+            <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
 
             <div class="site-navigation-item site-navigation-updates">
-
-                <a
-                    href="releases.html"
-                    class="site-navigation-link"
-                >
-                    UPDATES
-                </a>
-
-
-                <!-- UPDATES DROPDOWN -->
-
+                <a href="releases.html" class="site-navigation-link active">UPDATES</a>
                 <div class="updates-dropdown">
-
-                    <a
-                        href="releases.html"
-                        class="dropdown-navigation-link"
-                    >
-                        RELEASES
-                    </a>
-
+                    <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                    <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
+                    <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
                 </div>
-
             </div>
 
+            <a href="lines.html" class="site-navigation-link">LINES</a>
 
-            <!-- =================================================
-                 ABOUT
-            ================================================== -->
-
-            <div class="site-navigation-item site-navigation-about">
-
-                <a
-                    href="about.html"
-                    class="site-navigation-link"
-                >
-                    ABOUT
-                </a>
-
-
-                <!-- ABOUT DROPDOWN -->
-
-                <div class="about-dropdown">
-
-                    <a
-                        href="contact.html"
-                        class="dropdown-navigation-link"
-                    >
-                        CONTACT
-                    </a>
-
-                </div>
-
-            </div>
-
-
+            <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                CART (<span id="cart-counter">0</span>)
+            </button>
         </nav>
-
     </div>
-
 </header>
+
 <!-- =====================================================
      MAIN
 ====================================================== -->
-
 <main>
 
-
-<!-- =====================================================
-     UPDATES HERO
-====================================================== -->
-
-<section class="page-hero">
-
-    <div class="container">
-
-        <span class="section-kicker">
-            RAKETA DYNAMICS / UPDATES
-        </span>
-
-        <h1>
-            Updates.
-        </h1>
-
-        <p class="large-text">
-            Latest Raketa Dynamics releases, announcements
-            and work in progress.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     LATEST RELEASES
-====================================================== -->
-
-<section class="releases-section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-kicker">
-                LATEST RELEASES
-            </span>
-
-            <h2>
-                Latest releases.
-            </h2>
-
+    <!-- UPDATES HERO -->
+    <section class="page-hero">
+        <div class="page-hero-slideshow">
+            <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+            <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
         </div>
-
-
-        <div class="release-grid">
-
-
-            <!-- MiG-21UPG -->
-
-            <article class="release-card">
-
-                <div class="release-card-image">
-
-                    <img
-                        src="wip.png"
-                        alt="MiG-21UPG CU2777 No. 23 Squadron Panthers"
-                    >
-
-                </div>
-
-                <div class="release-card-content">
-
-                    <h3>
-                        MiG-21UPG
-                    </h3>
-
-                    <p>
-                        'CU2777' No. 23 Squadron "Panthers"
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- Su-30MKI -->
-
-            <article class="release-card">
-
-                <div class="release-card-image">
-
-                    <img
-                        src="WIPwhite.png"
-                        alt="Su-30MKI SB232 No. 220 Squadron Desert Tigers"
-                    >
-
-                </div>
-
-                <div class="release-card-content">
-
-                    <h3>
-                        Su-30MKI
-                    </h3>
-
-                    <p>
-                        'SB232' No. 220 Squadron "Desert Tigers"
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 51P6A -->
-
-            <article class="release-card">
-
-                <div class="release-card-image">
-
-                    <img
-                        src="wip.png"
-                        alt="51P6A Bhuj"
-                    >
-
-                </div>
-
-                <div class="release-card-content">
-
-                    <h3>
-                        51P6A
-                    </h3>
-
-                    <p>
-                        'Bhuj'
-                    </p>
-
-                </div>
-
-            </article>
-
-
+        <div class="page-hero-overlay"></div>
+        <div class="container">
+            <h1>Releases</h1>
+            <p class="large-text">Latest collection releases, production announcements, and schedule updates.</p>
         </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     ANNOUNCEMENTS
-====================================================== -->
-
-<section class="releases-section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-kicker">
-                ANNOUNCEMENTS
-            </span>
-
-            <h2>
-                Announcements.
-            </h2>
-
+        <div class="page-hero-dots">
+            <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+            <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
         </div>
+    </section>
 
+    <!-- LATEST RELEASES -->
+    <section class="releases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest releases</h2>
+            </div>
 
-        <div class="announcement-list">
+            <div class="release-grid">
+                <!-- MiG-21UPG -->
+                <article class="release-card">
+                    <div class="release-card-image">
+                        <img src="wip.png" alt="MiG-21UPG CU2777 No. 23 Squadron Panthers">
+                    </div>
+                    <div class="release-card-content">
+                        <h3>MiG-21UPG</h3>
+                        <p>'CU2777' No. 23 Squadron "Panthers"</p>
+                    </div>
+                </article>
 
-            <article class="announcement-item">
+                <!-- Su-30MKI -->
+                <article class="release-card">
+                    <div class="release-card-image">
+                        <img src="WIPwhite.png" alt="Su-30MKI SB232 No. 220 Squadron Desert Tigers">
+                    </div>
+                    <div class="release-card-content">
+                        <h3>Su-30MKI</h3>
+                        <p>'SB232' No. 220 Squadron "Desert Tigers"</p>
+                    </div>
+                </article>
 
-                <h3>
-                    MiG-21UPG 'CU2777'
-                </h3>
-
-            </article>
-
-
-            <article class="announcement-item">
-
-                <h3>
-                    Su-30MKI &amp; 51P6A
-                </h3>
-
-            </article>
-
+                <!-- 51P6A -->
+                <article class="release-card">
+                    <div class="release-card-image">
+                        <img src="wip.png" alt="51P6A Bhuj">
+                    </div>
+                    <div class="release-card-content">
+                        <h3>51P6A</h3>
+                        <p>'Bhuj'</p>
+                    </div>
+                </article>
+            </div>
         </div>
+    </section>
 
-    </div>
+    <!-- ANNOUNCEMENTS -->
+    <section class="releases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Announcements</h2>
+            </div>
 
-</section>
+            <div class="announcement-list">
+                <article class="announcement-item">
+                    <h3>MiG-21UPG 'CU2777'</h3>
+                </article>
 
-
-<!-- =====================================================
-     WORK IN PROGRESS
-====================================================== -->
-
-<section class="releases-section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-kicker">
-                WORK IN PROGRESS
-            </span>
-
-            <h2>
-                Work in progress.
-            </h2>
-
+                <article class="announcement-item">
+                    <h3>Su-30MKI &amp; 51P6A</h3>
+                </article>
+            </div>
         </div>
+    </section>
 
+    <!-- WORK IN PROGRESS -->
+    <section class="releases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work in progress</h2>
+            </div>
 
-        <div class="wip-grid">
+            <div class="wip-grid">
+                <!-- MiG-21UPG -->
+                <article class="wip-card">
+                    <div class="wip-card-image">
+                        <img src="wip.png" alt="MiG-21UPG work in progress">
+                    </div>
+                    <div class="wip-card-content">
+                        <h3>MiG-21UPG</h3>
+                        <p>CU2777 / No. 23 Squadron</p>
+                    </div>
+                </article>
 
+                <!-- 51P6A -->
+                <article class="wip-card">
+                    <div class="wip-card-image">
+                        <img src="WIPwhite.png" alt="51P6A work in progress">
+                    </div>
+                    <div class="wip-card-content">
+                        <h3>51P6A</h3>
+                        <p>Bhuj / May 2025</p>
+                    </div>
+                </article>
 
-            <!-- MiG-21UPG -->
-
-            <article class="wip-card">
-
-                <div class="wip-card-image">
-
-                    <img
-                        src="wip.png"
-                        alt="MiG-21UPG work in progress"
-                    >
-
-                </div>
-
-                <div class="wip-card-content">
-
-                    <h3>
-                        MiG-21UPG
-                    </h3>
-
-                    <p>
-                        CU2777 / No. 23 Squadron
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 51P6A -->
-
-            <article class="wip-card">
-
-                <div class="wip-card-image">
-
-                    <img
-                        src="WIPwhite.png"
-                        alt="51P6A work in progress"
-                    >
-
-                </div>
-
-                <div class="wip-card-content">
-
-                    <h3>
-                        51P6A
-                    </h3>
-
-                    <p>
-                        Bhuj / May 2025
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- HELICOPTERS -->
-
-            <article class="wip-card">
-
-                <div class="wip-card-image">
-
-                    <img
-                        src="wip.png"
-                        alt="Helicopters work in progress"
-                    >
-
-                </div>
-
-                <div class="wip-card-content">
-
-                    <h3>
-                        Helicopters
-                    </h3>
-
-                    <p>
-                        PROJECT TBC
-                    </p>
-
-                    <span>
-                        Work in progress
-                    </span>
-
-                </div>
-
-            </article>
-
-
+                <!-- HELICOPTERS -->
+                <article class="wip-card">
+                    <div class="wip-card-image">
+                        <img src="wip.png" alt="Helicopters work in progress">
+                    </div>
+                    <div class="wip-card-content">
+                        <h3>Helicopters</h3>
+                        <p>PROJECT TBC</p>
+                        <span>Work in progress</span>
+                    </div>
+                </article>
+            </div>
         </div>
-
-    </div>
-
-</section>
-
+    </section>
 
 </main>
-
 
 <!-- =====================================================
      FOOTER
 ====================================================== -->
-
 <footer class="site-footer">
-
     <div class="container footer-grid">
-
-
-        <!-- FOOTER BRAND -->
-
         <div>
-
-            <a
-                href="index.html"
-                class="brand footer-brand"
-            >
-
-                <img
-                    src="logo.png"
-                    alt="Raketa Dynamics"
-                >
-
+            <a href="index.html" class="brand footer-brand">
+                <img src="logo.png" alt="Raketa Dynamics">
             </a>
-
-            <p>
-                Highly detailed aircraft replicas for collectors
-                and aviation enthusiasts.
-            </p>
-
+            <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
         </div>
-
-
-        <!-- FOOTER LINKS -->
 
         <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="supply.html">
-                Supply
-            </a>
-
-            <a href="models.html">
-                Models
-            </a>
-
-            <a href="armoury.html">
-                Armoury
-            </a>
-
-            <a href="hanger.html">
-                Hanger
-            </a>
-
-            <a href="archive.html">
-                Collection Archive
-            </a>
-
-            <a href="releases.html">
-                Updates
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="supply.html">Supply</a>
+            <a href="models.html">Models</a>
+            <a href="armoury.html">Armoury</a>
+            <a href="hanger.html">Hanger</a>
+            <a href="archive.html">Collection Archive</a>
+            <a href="releases.html">Updates</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="lines.html">Lines</a>
         </div>
-
-
-        <!-- FOOTER CONTACT -->
 
         <div class="footer-contact">
-
-            <span>
-                CONTACT
-            </span>
-
-            <a href="mailto:Raketadynamicsmodels@gmail.com">
-                Raketadynamicsmodels@gmail.com
-            </a>
-
+            <span>CONTACT</span>
+            <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
         </div>
-
     </div>
-
-
-    <!-- FOOTER BOTTOM -->
 
     <div class="container footer-bottom">
-
-        <span>
-            © 2026 Raketa Dynamics
-        </span>
-
-        <span>
-            Berkshire, United Kingdom
-        </span>
-
+        <span>© 2026 Raketa Dynamics</span>
+        <span>Berkshire, United Kingdom</span>
     </div>
-
 </footer>
 
+<!-- SHOPPING CART SLIDE-OUT DRAWER -->
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>ACQUISITION CART</h3>
+        <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>SUBTOTAL</span>
+            <span id="cart-total">£0.00</span>
+        </div>
+        <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+    </div>
+</div>
+<div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
 
+<script src="hero-slideshow.js"></script>
+<script src="cart.js"></script>
 </body>
 
 </html>

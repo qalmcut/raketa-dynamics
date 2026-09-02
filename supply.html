@@ -1,1123 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Explore the Supply divisions of Raketa Dynamics — Models, Armoury and Hanger."
-    >
-
-    <title>Raketa Dynamics | Supply</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Raketa Dynamics Supply Shop — Scale Models, Cockpit Projects, and Replicas.">
+    <title>Supply — Raketa Dynamics</title>
     <link rel="stylesheet" href="style.css">
-
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
-
-
 <body>
 
-
-<!-- =====================================================
-     HEADER
-====================================================== -->
-
-<!-- =====================================================
-     FIXED HEADER
-====================================================== -->
-
-<header class="site-header">
-
-    <div class="nav-container">
-
-
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <img
-                src="logo.png"
-                alt="Raketa Dynamics"
-            >
-
-        </a>
-
-
-        <!-- MAIN NAVIGATION -->
-
-        <nav
-            class="site-navigation"
-            aria-label="Main navigation"
-        >
-
-
-            <!-- HOME -->
-
-            <a
-                href="index.html"
-                class="site-navigation-link"
-            >
-                HOME
+    <!-- GLOBAL HEADER -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Raketa Dynamics">
             </a>
 
+            <nav class="site-navigation" aria-label="Main navigation">
+                <a href="index.html" class="site-navigation-link">HOME</a>
 
-            <!-- =================================================
-                 SUPPLY
-            ================================================== -->
+                <div class="site-navigation-item site-navigation-supply">
+                    <a href="supply.html" class="site-navigation-link active">SUPPLY</a>
+                    <div class="supply-dropdown">
+                        <a href="supply.html#models" class="dropdown-navigation-link" onclick="switchTab('models')">MODELS</a>
+                        <a href="supply.html#armoury" class="dropdown-navigation-link" onclick="switchTab('armoury')">ARMOURY</a>
+                        <a href="supply.html#hanger" class="dropdown-navigation-link" onclick="switchTab('hanger')">HANGER</a>
+                    </div>
+                </div>
 
-            <div class="site-navigation-item site-navigation-supply">
+                <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
 
-                <a
-                    href="supply.html"
-                    class="site-navigation-link"
-                >
-                    SUPPLY
-                </a>
+                <div class="site-navigation-item site-navigation-updates">
+                    <a href="releases.html" class="site-navigation-link">UPDATES</a>
+                    <div class="updates-dropdown">
+                        <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                        <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
+                        <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
+                    </div>
+                </div>
 
+                <a href="lines.html" class="site-navigation-link">LINES</a>
 
-                <!-- SUPPLY DROPDOWN -->
+                <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                    CART (<span id="cart-counter">0</span>)
+                </button>
+            </nav>
+        </div>
+    </header>
 
-                <div class="supply-dropdown">
+    <main>
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="page-hero-slideshow">
+                <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+                <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
+            </div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <h1>Supply</h1>
+                <p class="large-text">Scale models, cockpit projects, and full-scale replicas.</p>
+            </div>
+            <div class="page-hero-dots">
+                <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+                <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
+            </div>
+        </section>
 
-                    <a
-                        href="models.html"
-                        class="dropdown-navigation-link"
-                    >
-                        MODELS
-                    </a>
+        <!-- SHOP DASHBOARD -->
+        <section class="supply-shop-section">
+            <div class="container">
 
-                    <a
-                        href="armoury.html"
-                        class="dropdown-navigation-link"
-                    >
-                        ARMOURY
-                    </a>
+                <!-- TOP CONTROLS: 3 TABS & DYNAMIC FILTERS -->
+                <div class="archive-control-bar">
+                    <div class="archive-tabs-wrapper">
+                        <button class="archive-tab-btn is-active" data-tab="models" onclick="switchTab('models')">
+                            <span class="tab-code">01</span>
+                            <span class="tab-name">MODELS</span>
+                        </button>
+                        <button class="archive-tab-btn" data-tab="armoury" onclick="switchTab('armoury')">
+                            <span class="tab-code">02</span>
+                            <span class="tab-name">ARMOURY</span>
+                        </button>
+                        <button class="archive-tab-btn" data-tab="hanger" onclick="switchTab('hanger')">
+                            <span class="tab-code">03</span>
+                            <span class="tab-name">HANGER</span>
+                        </button>
+                    </div>
 
-                    <a
-                        href="hanger.html"
-                        class="dropdown-navigation-link"
-                    >
-                        HANGER
-                    </a>
+                    <!-- REAL-TIME FILTERS -->
+                    <div class="archive-filter-panel">
+                        <div class="filter-group">
+                            <label for="filter-type">TYPE</label>
+                            <select id="filter-type" class="archive-select">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="filter-country">COUNTRY</label>
+                            <select id="filter-country" class="archive-select">
+                                <option value="all">ALL COUNTRIES</option>
+                                <option value="india">INDIA</option>
+                                <option value="russia">RUSSIA</option>
+                                <option value="ukraine">UKRAINE</option>
+                                <option value="uk">UNITED KINGDOM</option>
+                                <option value="china">CHINA</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="filter-line">LINE</label>
+                            <select id="filter-line" class="archive-select">
+                                <option value="all">ALL LINES</option>
+                                <option value="silver">SILVER LINE</option>
+                                <option value="squadron">SQUADRON LINE</option>
+                                <option value="gold">GOLD LINE</option>
+                                <option value="white">WHITE LINE</option>
+                                <option value="black">BLACK LINE</option>
+                            </select>
+                        </div>
+
+                        <button id="filter-reset-btn" class="archive-reset-btn" type="button" onclick="resetFilters()">RESET</button>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+                     TAB 1: MODELS
+                ====================================================== -->
+                <div id="shop-tab-models" class="shop-tab-pane is-active">
+
+                    <div class="sub-nav-bar">
+                        <a href="#section-aircraft" class="sub-nav-pill">AIRCRAFT</a>
+                        <a href="#section-helicopters" class="sub-nav-pill">HELICOPTERS</a>
+                        <a href="#section-ground" class="sub-nav-pill">GROUND VEHICLES</a>
+                    </div>
+
+                    <!-- AIRCRAFT -->
+                    <div id="section-aircraft" class="shop-subsection">
+                        <div class="subsection-header"><h3>Aircraft</h3></div>
+                        <div class="shop-product-grid">
+
+                            <!-- Su-30MKI SB232 — BLACK LINE (Limited) -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="india" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Su-30MKI SB232"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE — LIMITED</div>
+                                    <h4 class="product-title">Su-30MKI 'SB232'</h4>
+                                    <p class="product-spec">No. 220 Squadron "Desert Tigers" — May 2025</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£320.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-30MKI SB232 (Black Line)', 320.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-30MKI SB232 — GOLD LINE -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="Su-30MKI SB232"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">Su-30MKI 'SB232'</h4>
+                                    <p class="product-spec">No. 220 Squadron "Desert Tigers" — May 2025</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£210.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-30MKI SB232 (Gold Line)', 210.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MiG-21UPG Bison CU2777 — SILVER LINE -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="india" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="MiG-21UPG Bison CU2777"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">MiG-21UPG Bison 'CU2777'</h4>
+                                    <p class="product-spec">No. 23 Squadron "Panthers" — Sep 2025</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£145.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MiG-21UPG Bison CU2777 (Silver Line)', 145.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MiG-21UPG Bison CU2777 — GOLD LINE -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="MiG-21UPG Bison CU2777"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">MiG-21UPG Bison 'CU2777'</h4>
+                                    <p class="product-spec">No. 23 Squadron "Panthers" — Sep 2025</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£195.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MiG-21UPG Bison CU2777 (Gold Line)', 195.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-27S/P Blue 23 — SILVER LINE (Ukraine) -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="ukraine" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Su-27S/P Blue 23"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">Su-27S/P 'Blue 23'</h4>
+                                    <p class="product-spec">831st Tactical Aviation Brigade — Feb 2022</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£155.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-27S/P Blue 23 (Silver Line)', 155.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-27S/P Blue 23 — WHITE LINE (Ukraine) -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="ukraine" data-line="white">
+                                <div class="product-line-stripe stripe-white"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="Su-27S/P Blue 23"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-white">WHITE LINE</div>
+                                    <h4 class="product-title">Su-27S/P 'Blue 23'</h4>
+                                    <p class="product-spec">831st Tactical Aviation Brigade — Feb 2022</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£310.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-27S/P Blue 23 (White Line)', 310.00, 'White Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-30SM RF-81885 — WHITE LINE (Russia) -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="russia" data-line="white">
+                                <div class="product-line-stripe stripe-white"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Su-30SM RF-81885"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-white">WHITE LINE</div>
+                                    <h4 class="product-title">Su-30SM 'RF-81885'</h4>
+                                    <p class="product-spec">4th Guards Composite Aviation Regiment, Baltic Fleet — Jan 2026</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£295.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-30SM RF-81885 (White Line)', 295.00, 'White Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-30SM RF-81885 — BLACK LINE (UKR/RUS Special) -->
+                            <div class="shop-product-card" data-type="aircraft" data-country="russia" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="Su-30SM RF-81885"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE — UKR/RUS SPECIAL</div>
+                                    <h4 class="product-title">Su-30SM 'RF-81885'</h4>
+                                    <p class="product-spec">4th Guards Composite Aviation Regiment, Baltic Fleet — Jan 2026</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£380.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-30SM RF-81885 (Black Line)', 380.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- HELICOPTERS -->
+                    <div id="section-helicopters" class="shop-subsection">
+                        <div class="subsection-header"><h3>Helicopters</h3></div>
+                        <div class="shop-product-grid">
+
+                            <div class="shop-product-card" data-type="helicopter" data-country="india" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Helicopters Coming Soon"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">COMING SOON</div>
+                                    <h4 class="product-title">Helicopters — Work In Progress</h4>
+                                    <p class="product-spec">Projects TBC — Check back for updates</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">—</span>
+                                        <button class="btn-add-cart" type="button" disabled style="opacity:0.4;cursor:not-allowed;">COMING SOON</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- GROUND VEHICLES -->
+                    <div id="section-ground" class="shop-subsection">
+                        <div class="subsection-header"><h3>Ground Vehicles</h3></div>
+                        <div class="shop-product-grid">
+
+                            <!-- 51P6A TEL S-400 Bhuj — BLACK LINE -->
+                            <div class="shop-product-card" data-type="ground" data-country="india" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="51P6A TEL S-400 Bhuj"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE</div>
+                                    <h4 class="product-title">51P6A TEL S-400 'Bhuj'</h4>
+                                    <p class="product-spec">No. 27 Wing — May 2025</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£245.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('51P6A TEL S-400 Bhuj (Black Line)', 245.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 24P6A TEL S-400 Bhuj — GOLD LINE -->
+                            <div class="shop-product-card" data-type="ground" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="24P6A TEL S-400 Bhuj"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">24P6A TEL S-400 'Bhuj'</h4>
+                                    <p class="product-spec">No. 27 Wing — May 2025</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£195.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('24P6A TEL S-400 Bhuj (Gold Line)', 195.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
 
-            </div>
+                <!-- =====================================================
+                     TAB 2: ARMOURY (RIFLE REPLICAS)
+                ====================================================== -->
+                <div id="shop-tab-armoury" class="shop-tab-pane">
+                    <div class="shop-subsection">
+                        <div class="subsection-header"><h3>Rifle Replicas & Ordnance</h3></div>
+                        <div class="shop-product-grid">
 
+                            <!-- AK-2091 — 5th Rajput Regiment — GOLD LINE -->
+                            <div class="shop-product-card" data-type="weapon" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="AK-2091"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">AK-2091 (1:1)</h4>
+                                    <p class="product-spec">5th Rajput Regiment — Jul 2026</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£285.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('AK-2091 5th Rajput (Gold Line)', 285.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- =================================================
-                 COLLECTION ARCHIVE
-            ================================================== -->
+                            <!-- 1A1 SLR — 2nd Rajputana Rifles — SILVER LINE -->
+                            <div class="shop-product-card" data-type="weapon" data-country="india" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="1A1 SLR"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">1A1 SLR (1:1)</h4>
+                                    <p class="product-spec">2nd Rajputana Rifles — Jun 1999</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£220.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('1A1 SLR 2nd Rajputana (Silver Line)', 220.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-            <a
-                href="archive.html"
-                class="site-navigation-link"
-            >
-                COLLECTION ARCHIVE
-            </a>
+                            <!-- L1A1 — 1st Bn Royal Regiment of Fusiliers — SILVER LINE -->
+                            <div class="shop-product-card" data-type="weapon" data-country="uk" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="L1A1"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">L1A1 (1:1)</h4>
+                                    <p class="product-spec">1st Bn Royal Regiment of Fusiliers — Jul 1970</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£235.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('L1A1 Royal Fusiliers (Silver Line)', 235.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <!-- ML106 — 1LN F16 Alpha Group — SILVER LINE -->
+                            <div class="shop-product-card" data-type="weapon" data-country="india" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="ML106"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">ML106 (1:1)</h4>
+                                    <p class="product-spec">1LN F16 Alpha Group — Oct 2008</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£210.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('ML106 1LN F16 Alpha (Silver Line)', 210.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- =================================================
-                 UPDATES
-            ================================================== -->
+                            <!-- AK74M — 75th Guards Air Assault Division — GOLD LINE -->
+                            <div class="shop-product-card" data-type="weapon" data-country="russia" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="AK74M 75th Guards"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">AK74M (1:1)</h4>
+                                    <p class="product-spec">75th Guards Air Assault Division — Dec 2023</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£270.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('AK74M 75th Guards (Gold Line)', 270.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="site-navigation-item site-navigation-updates">
+                            <!-- AK74M — 82nd Air Assault Division — SILVER LINE -->
+                            <div class="shop-product-card" data-type="weapon" data-country="russia" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="AK74M 82nd Air Assault"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">AK74M (1:1)</h4>
+                                    <p class="product-spec">82nd Air Assault Division — Dec 2023</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£220.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('AK74M 82nd Air Assault (Silver Line)', 220.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-                <a
-                    href="releases.html"
-                    class="site-navigation-link"
-                >
-                    UPDATES
-                </a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- =====================================================
+                     TAB 3: HANGER (COCKPITS & PANELS)
+                ====================================================== -->
+                <div id="shop-tab-hanger" class="shop-tab-pane">
+                    <div class="shop-subsection">
+                        <div class="subsection-header"><h3>Cockpits & Simulator Systems</h3></div>
+                        <div class="shop-product-grid">
 
-                <!-- UPDATES DROPDOWN -->
+                            <!-- MiG-21bis 75AP — SILVER LINE (Display Only) -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="russia" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="MiG-21bis 75AP"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE — DISPLAY</div>
+                                    <h4 class="product-title">MiG-21bis 75AP Cockpit IP</h4>
+                                    <p class="product-spec">Full-Scale Instrument Panel — Display Only</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£490.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MiG-21bis 75AP Cockpit (Silver Line)', 490.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="updates-dropdown">
+                            <!-- MiG-21bis 75AP — SQUADRON LINE (DCS Capable) -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="russia" data-line="squadron">
+                                <div class="product-line-stripe stripe-squadron"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="MiG-21bis 75AP DCS"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-squadron">SQUADRON LINE — DCS SIMULATOR</div>
+                                    <h4 class="product-title">MiG-21bis 75AP Cockpit IP</h4>
+                                    <p class="product-spec">Full-Scale Instrument Panel — DCS World Compatible</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£740.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MiG-21bis 75AP Cockpit DCS (Squadron Line)', 740.00, 'Squadron Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <a
-                        href="releases.html"
-                        class="dropdown-navigation-link"
-                    >
-                        RELEASES
-                    </a>
+                            <!-- J11A — SILVER LINE (Display Only) -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="china" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="J11A Cockpit"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE — DISPLAY</div>
+                                    <h4 class="product-title">J11A Cockpit IP</h4>
+                                    <p class="product-spec">Full-Scale Instrument Panel — Display Only</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£520.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('J11A Cockpit (Silver Line)', 520.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <!-- J11A — GOLD LINE -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="china" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="J11A Cockpit Gold"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">J11A Cockpit IP</h4>
+                                    <p class="product-spec">Advanced Backlit Multi-Function Display System</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£720.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('J11A Cockpit (Gold Line)', 720.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-30MKI SB232 — BLACK LINE Cockpit -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="india" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Su-30MKI SB232 Cockpit"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE — LIMITED</div>
+                                    <h4 class="product-title">Su-30MKI 'SB232' Cockpit IP</h4>
+                                    <p class="product-spec">No. 220 Squadron "Desert Tigers" — Full IP System</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£980.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-30MKI SB232 Cockpit (Black Line)', 980.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-27S/P Blue 23 — WHITE LINE Cockpit -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="ukraine" data-line="white">
+                                <div class="product-line-stripe stripe-white"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="Su-27S/P Blue 23 Cockpit"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-white">WHITE LINE</div>
+                                    <h4 class="product-title">Su-27S/P 'Blue 23' Cockpit IP</h4>
+                                    <p class="product-spec">831st Tactical Aviation Brigade — Full IP System</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£860.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-27S/P Blue 23 Cockpit (White Line)', 860.00, 'White Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Su-30SM RF-81885 — WHITE LINE Cockpit -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="russia" data-line="white">
+                                <div class="product-line-stripe stripe-white"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Su-30SM RF-81885 Cockpit"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-white">WHITE LINE</div>
+                                    <h4 class="product-title">Su-30SM 'RF-81885' Cockpit IP</h4>
+                                    <p class="product-spec">4th Guards Composite Aviation Regiment, Baltic Fleet</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£890.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Su-30SM RF-81885 Cockpit (White Line)', 890.00, 'White Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MiG-21UPG Bison CU2777 — GOLD LINE Cockpit -->
+                            <div class="shop-product-card" data-type="cockpit" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="MiG-21UPG CU2777 Cockpit"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">MiG-21UPG Bison 'CU2777' Cockpit IP</h4>
+                                    <p class="product-spec">No. 23 Squadron "Panthers" — Full IP System</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£670.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MiG-21UPG CU2777 Cockpit (Gold Line)', 670.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
+        </section>
+    </main>
 
+    <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>ACQUISITION CART</h3>
+            <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+        </div>
+    </div>
+    <div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
 
-            <!-- =================================================
-                 ABOUT
-            ================================================== -->
-
-            <div class="site-navigation-item site-navigation-about">
-
-                <a
-                    href="about.html"
-                    class="site-navigation-link"
-                >
-                    ABOUT
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="brand footer-brand">
+                    <img src="logo.png" alt="Raketa Dynamics">
                 </a>
-
-
-                <!-- ABOUT DROPDOWN -->
-
-                <div class="about-dropdown">
-
-                    <a
-                        href="contact.html"
-                        class="dropdown-navigation-link"
-                    >
-                        CONTACT
-                    </a>
-
-                </div>
-
+                <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
             </div>
-
-
-        </nav>
-
-    </div>
-
-</header>
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
-<main>
-
-
-<!-- =====================================================
-     SUPPLY HERO
-====================================================== -->
-
-<section class="page-hero">
-
-    <div class="container">
-
-        <span class="section-kicker">
-            RAKETA DYNAMICS / SUPPLY
-        </span>
-
-        <h1>
-            Supply.
-        </h1>
-
-        <p class="large-text">
-            Explore the three divisions of Raketa Dynamics.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SUPPLY DIVISIONS
-====================================================== -->
-
-<section class="supply-section">
-
-    <div class="container supply-container">
-
-
-        <!-- =================================================
-             MODELS
-        ================================================== -->
-
-        <a
-            href="models.html"
-            class="supply-card"
-        >
-
-            <div class="supply-card-image">
-
-                <img
-                    src="wip.png"
-                    alt="Models"
-                >
-
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="supply.html">Supply</a>
+                <a href="models.html">Models</a>
+                <a href="armoury.html">Armoury</a>
+                <a href="hanger.html">Hanger</a>
+                <a href="archive.html">Collection Archive</a>
+                <a href="releases.html">Updates</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="lines.html">Lines</a>
             </div>
-
-
-            <div class="supply-card-overlay"></div>
-
-
-            <div class="supply-card-content">
-
-                <span class="supply-card-number">
-                    01
-                </span>
-
-                <span class="supply-card-kicker">
-                    SUPPLY / MODELS
-                </span>
-
-                <h2>
-                    Models
-                </h2>
-
-                <p>
-                    Explore the Raketa Dynamics aircraft
-                    replica collection.
-                </p>
-
-                <span class="supply-card-link">
-                    Enter Models
-                    <span class="supply-card-arrow">
-                        →
-                    </span>
-                </span>
-
+            <div class="footer-contact">
+                <span>CONTACT</span>
+                <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
             </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             ARMOURY
-        ================================================== -->
-
-        <a
-            href="armoury.html"
-            class="supply-card"
-        >
-
-            <div class="supply-card-image">
-
-                <img
-                    src="wip.png"
-                    alt="Armoury"
-                >
-
-            </div>
-
-
-            <div class="supply-card-overlay"></div>
-
-
-            <div class="supply-card-content">
-
-                <span class="supply-card-number">
-                    02
-                </span>
-
-                <span class="supply-card-kicker">
-                    SUPPLY / ARMOURY
-                </span>
-
-                <h2>
-                    Armoury
-                </h2>
-
-                <p>
-                    Explore the equipment and supporting
-                    collection within the Armoury.
-                </p>
-
-                <span class="supply-card-link">
-                    Enter Armoury
-                    <span class="supply-card-arrow">
-                        →
-                    </span>
-                </span>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             HANGER
-        ================================================== -->
-
-        <a
-            href="hanger.html"
-            class="supply-card"
-        >
-
-            <div class="supply-card-image">
-
-                <img
-                    src="wip.png"
-                    alt="Hanger"
-                >
-
-            </div>
-
-
-            <div class="supply-card-overlay"></div>
-
-
-            <div class="supply-card-content">
-
-                <span class="supply-card-number">
-                    03
-                </span>
-
-                <span class="supply-card-kicker">
-                    SUPPLY / HANGER
-                </span>
-
-                <h2>
-                    Hanger
-                </h2>
-
-                <p>
-                    Explore the aircraft and aviation projects
-                    held within the Hanger.
-                </p>
-
-                <span class="supply-card-link">
-                    Enter Hanger
-                    <span class="supply-card-arrow">
-                        →
-                    </span>
-                </span>
-
-            </div>
-
-        </a>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SUPPLY INTRODUCTION
-====================================================== -->
-
-<section class="supply-introduction">
-
-    <div class="container">
-
-        <div class="supply-introduction-content">
-
-            <span class="section-kicker">
-                RAKETA DYNAMICS
-            </span>
-
-            <h2>
-                Three divisions.
-                One collection.
-            </h2>
-
-            <p>
-                The Supply section brings together the three
-                principal divisions of Raketa Dynamics. Select
-                a division above to continue.
-            </p>
-
         </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     FOOTER
-====================================================== -->
-
-<footer class="site-footer">
-
-
-    <div class="container footer-grid">
-
-
-        <!-- FOOTER BRAND -->
-
-        <div>
-
-            <a
-                href="index.html"
-                class="brand footer-brand"
-            >
-
-                <img
-                    src="logo.png"
-                    alt="Raketa Dynamics"
-                >
-
-            </a>
-
-
-            <p>
-                Highly detailed aircraft replicas for collectors
-                and aviation enthusiasts.
-            </p>
-
+        <div class="container footer-bottom">
+            <span>© 2026 Raketa Dynamics</span>
+            <span>Berkshire, United Kingdom</span>
         </div>
-
-
-        <!-- FOOTER LINKS -->
-
-        <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="supply.html">
-                Supply
-            </a>
-
-            <a href="models.html">
-                Models
-            </a>
-
-            <a href="armoury.html">
-                Armoury
-            </a>
-
-            <a href="hanger.html">
-                Hanger
-            </a>
-
-            <a href="archive.html">
-                Collection Archive
-            </a>
-
-            <a href="releases.html">
-                Updates
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </div>
-
-
-        <!-- FOOTER CONTACT -->
-
-        <div class="footer-contact">
-
-            <span>
-                CONTACT
-            </span>
-
-            <a href="mailto:Raketadynamicsmodels@gmail.com">
-                Raketadynamicsmodels@gmail.com
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- FOOTER BOTTOM -->
-
-    <div class="container footer-bottom">
-
-        <span>
-            © 2026 Raketa Dynamics
-        </span>
-
-        <span>
-            Berkshire, United Kingdom
-        </span>
-
-    </div>
-
-
-</footer>
-
-
-
-<!-- =====================================================
-     SUPPLY PAGE STYLES
-====================================================== -->
-
-<style>
-
-
-/* =====================================================
-   SUPPLY SECTION
-====================================================== */
-
-.supply-section {
-
-    padding-top: 90px;
-
-    padding-bottom: 120px;
-
-    background: var(--background);
-
-}
-
-
-/* =====================================================
-   SUPPLY CONTAINER
-
-   Large gaps between each category.
-   The background remains clearly visible.
-====================================================== */
-
-.supply-container {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 65px;
-
-}
-
-
-/* =====================================================
-   SUPPLY CARD
-====================================================== */
-
-.supply-card {
-
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    min-height: 430px;
-
-    overflow: hidden;
-
-    background: #050605;
-
-    border: 1px solid var(--line-strong);
-
-    transition:
-        border-color 0.3s ease,
-        transform 0.3s ease;
-
-}
-
-
-.supply-card:hover {
-
-    border-color:
-        rgba(
-            193,
-            181,
-            142,
-            0.55
-        );
-
-    transform:
-        translateY(-4px);
-
-}
-
-
-/* =====================================================
-   CARD IMAGE
-====================================================== */
-
-.supply-card-image {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    background: #000;
-
-}
-
-
-.supply-card-image img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    opacity: 0.68;
-
-    transition:
-        transform 0.6s ease,
-        opacity 0.4s ease;
-
-}
-
-
-.supply-card:hover
-.supply-card-image img {
-
-    transform:
-        scale(1.035);
-
-    opacity: 0.82;
-
-}
-
-
-/* =====================================================
-   CARD OVERLAY
-====================================================== */
-
-.supply-card-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0, 0, 0, 0.84),
-            rgba(0, 0, 0, 0.35) 65%,
-            rgba(0, 0, 0, 0.60)
-        );
-
-    pointer-events: none;
-
-}
-
-
-.supply-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.10),
-            transparent 45%,
-            rgba(0, 0, 0, 0.45)
-        );
-
-    pointer-events: none;
-
-}
-
-
-/* =====================================================
-   CARD CONTENT
-====================================================== */
-
-.supply-card-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    min-height: 430px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    justify-content: center;
-
-    padding:
-        55px
-        clamp(
-            30px,
-            7vw,
-            100px
-        );
-
-}
-
-
-.supply-card-number {
-
-    color: var(--accent);
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.18em;
-
-}
-
-
-.supply-card-kicker {
-
-    margin-top: 9px;
-
-    color: var(--accent-light);
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-}
-
-
-.supply-card h2 {
-
-    margin-top: 14px;
-
-    color: var(--text);
-
-    font-size:
-        clamp(
-            52px,
-            7vw,
-            90px
-        );
-
-    font-weight: 500;
-
-    line-height: 0.95;
-
-    letter-spacing: -0.055em;
-
-}
-
-
-.supply-card p {
-
-    max-width: 520px;
-
-    margin-top: 24px;
-
-    color:
-        rgba(
-            238,
-            237,
-            231,
-            0.74
-        );
-
-    font-size: 14px;
-
-    line-height: 1.8;
-
-}
-
-
-.supply-card-link {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-top: 30px;
-
-    color: var(--text);
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.14em;
-
-    text-transform: uppercase;
-
-}
-
-
-.supply-card-arrow {
-
-    color: var(--accent-light);
-
-    font-size: 16px;
-
-    transition:
-        transform 0.25s ease;
-
-}
-
-
-.supply-card:hover
-.supply-card-arrow {
-
-    transform:
-        translateX(6px);
-
-}
-
-
-/* =====================================================
-   SUPPLY INTRODUCTION
-====================================================== */
-
-.supply-introduction {
-
-    padding-top: 130px;
-
-    padding-bottom: 140px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #151814,
-            #0b0d0b
-        );
-
-    border-top: 1px solid var(--line);
-
-}
-
-
-.supply-introduction-content {
-
-    max-width: 800px;
-
-}
-
-
-.supply-introduction h2 {
-
-    margin-top: 15px;
-
-    max-width: 750px;
-
-    font-size:
-        clamp(
-            45px,
-            6vw,
-            78px
-        );
-
-    font-weight: 500;
-
-    line-height: 1;
-
-    letter-spacing: -0.05em;
-
-}
-
-
-.supply-introduction p {
-
-    max-width: 600px;
-
-    margin-top: 28px;
-
-    color: var(--text-muted);
-
-    font-size: 15px;
-
-    line-height: 1.85;
-
-}
-
-
-/* =====================================================
-   TABLET
-====================================================== */
-
-@media (max-width: 760px) {
-
-
-    .supply-section {
-
-        padding-top: 60px;
-
-        padding-bottom: 85px;
-
-    }
-
-
-    .supply-container {
-
-        gap: 42px;
-
-    }
-
-
-    .supply-card {
-
-        min-height: 380px;
-
-    }
-
-
-    .supply-card-content {
-
-        min-height: 380px;
-
-        padding: 40px;
-
-    }
-
-
-    .supply-card h2 {
-
-        font-size:
-            clamp(
-                46px,
-                13vw,
-                72px
-            );
-
-    }
-
-
-    .supply-card p {
-
-        max-width: 440px;
-
-        font-size: 13px;
-
-    }
-
-
-    .supply-introduction {
-
-        padding-top: 90px;
-
-        padding-bottom: 100px;
-
-    }
-
-}
-
-
-/* =====================================================
-   SMALL MOBILE
-====================================================== */
-
-@media (max-width: 480px) {
-
-
-    .supply-section {
-
-        padding-top: 45px;
-
-        padding-bottom: 65px;
-
-    }
-
-
-    .supply-container {
-
-        gap: 28px;
-
-    }
-
-
-    .supply-card {
-
-        min-height: 340px;
-
-    }
-
-
-    .supply-card-content {
-
-        min-height: 340px;
-
-        padding: 28px;
-
-    }
-
-
-    .supply-card h2 {
-
-        font-size: 48px;
-
-    }
-
-
-    .supply-card p {
-
-        margin-top: 18px;
-
-        font-size: 12px;
-
-    }
-
-
-    .supply-card-link {
-
-        margin-top: 22px;
-
-    }
-
-
-    .supply-introduction {
-
-        padding-top: 80px;
-
-        padding-bottom: 90px;
-
-    }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-====================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-
-    .supply-card {
-
-        transition: none;
-
-    }
-
-
-    .supply-card-image img {
-
-        transition: none;
-
-    }
-
-
-    .supply-card-arrow {
-
-        transition: none;
-
-    }
-
-}
-
-
-</style>
-
-
+    </footer>
+
+    <script src="hero-slideshow.js"></script>
+    <script src="cart.js"></script>
+
+    <!-- DYNAMIC FILTER SCRIPT -->
+    <script>
+        const typeOptions = {
+            models: [
+                { value: 'all', label: 'ALL TYPES' },
+                { value: 'aircraft', label: 'AIRCRAFT' },
+                { value: 'helicopter', label: 'HELICOPTERS' },
+                { value: 'ground', label: 'GROUND VEHICLES' }
+            ],
+            armoury: [
+                { value: 'all', label: 'ALL TYPES' },
+                { value: 'weapon', label: 'WEAPONS / 1:1' }
+            ],
+            hanger: [
+                { value: 'all', label: 'ALL TYPES' },
+                { value: 'cockpit', label: 'COCKPITS & PANELS' }
+            ]
+        };
+
+        function updateTypeOptions(tabId) {
+            const select = document.getElementById('filter-type');
+            select.innerHTML = '';
+            (typeOptions[tabId] || typeOptions.models).forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt.value;
+                el.innerText = opt.label;
+                select.appendChild(el);
+            });
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.archive-tab-btn').forEach(btn => {
+                btn.classList.toggle('is-active', btn.dataset.tab === tabId);
+            });
+            document.querySelectorAll('.shop-tab-pane').forEach(pane => {
+                pane.classList.toggle('is-active', pane.id === `shop-tab-${tabId}`);
+            });
+            updateTypeOptions(tabId);
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const selectedType = document.getElementById('filter-type').value;
+            const selectedCountry = document.getElementById('filter-country').value;
+            const selectedLine = document.getElementById('filter-line').value;
+
+            const activePane = document.querySelector('.shop-tab-pane.is-active');
+            if (!activePane) return;
+
+            activePane.querySelectorAll('.shop-product-card').forEach(card => {
+                const cType = card.dataset.type;
+                const cCountry = card.dataset.country;
+                const cLine = card.dataset.line;
+
+                const matchType = (selectedType === 'all' || selectedType === cType);
+                const matchCountry = (selectedCountry === 'all' || selectedCountry === cCountry);
+                const matchLine = (selectedLine === 'all' || selectedLine === cLine);
+
+                card.style.display = (matchType && matchCountry && matchLine) ? 'flex' : 'none';
+            });
+
+            activePane.querySelectorAll('.shop-subsection').forEach(section => {
+                const visibleCards = section.querySelectorAll('.shop-product-card[style*="display: flex"]');
+                section.style.display = (visibleCards.length > 0) ? 'block' : 'none';
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-type').value = 'all';
+            document.getElementById('filter-country').value = 'all';
+            document.getElementById('filter-line').value = 'all';
+            applyFilters();
+        }
+
+        document.getElementById('filter-type').addEventListener('change', applyFilters);
+        document.getElementById('filter-country').addEventListener('change', applyFilters);
+        document.getElementById('filter-line').addEventListener('change', applyFilters);
+
+        updateTypeOptions('models');
+        applyFilters();
+    </script>
 </body>
-
 </html>

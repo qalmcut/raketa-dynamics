@@ -1,252 +1,334 @@
-            <div
-                class="model-branch"
-                id="rifle-replicas"
-            >
-                <div class="model-branch-title">
-                    <h2>
-                        Rifle Replicas
-                    </h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Raketa Dynamics Armoury — 1:1 Scale Replicas and Technical Display Ordnance.">
+    <title>Armoury | Raketa Dynamics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+
+    <!-- GLOBAL HEADER -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Raketa Dynamics">
+            </a>
+
+            <nav class="site-navigation" aria-label="Main navigation">
+                <a href="index.html" class="site-navigation-link">HOME</a>
+
+                <div class="site-navigation-item site-navigation-supply">
+                    <a href="supply.html" class="site-navigation-link active">SUPPLY</a>
+                    <div class="supply-dropdown">
+                        <a href="models.html" class="dropdown-navigation-link">MODELS</a>
+                        <a href="armoury.html" class="dropdown-navigation-link">ARMOURY</a>
+                        <a href="hanger.html" class="dropdown-navigation-link">HANGER</a>
+                    </div>
                 </div>
-                <div class="model-list">
-                    <!-- NEW: AK 203i -->
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-                        <div class="model-item-header">
-                            <h3 class="model-item-title">
-                                AK 203i 5th Rajput Regiment [Jul 2026]
-                            </h3>
-                            <span class="model-item-toggle">
-                                +
-                            </span>
+
+                <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
+
+                <div class="site-navigation-item site-navigation-updates">
+                    <a href="releases.html" class="site-navigation-link">UPDATES</a>
+                    <div class="updates-dropdown">
+                        <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                        <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
+                        <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
+                    </div>
+                </div>
+
+                <a href="lines.html" class="site-navigation-link">LINES</a>
+
+                <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                    CART (<span id="cart-counter">0</span>)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="page-hero-slideshow">
+                <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+                <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
+            </div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <h1>Armoury</h1>
+                <p class="large-text">1:1 full-scale replicas, weapon platforms, and technical display ordnance.</p>
+            </div>
+            <div class="page-hero-dots">
+                <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+                <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
+            </div>
+        </section>
+
+        <!-- ARMOURY SHOP -->
+        <section class="supply-shop-section">
+            <div class="container">
+                
+                <!-- TOP CONTROLS: 3 TABS & FILTERS -->
+                <div class="archive-control-bar">
+                    <div class="archive-tabs-wrapper">
+                        <a href="models.html" class="archive-tab-btn">
+                            <span class="tab-code">01</span>
+                            <span class="tab-name">MODELS</span>
+                        </a>
+                        <a href="armoury.html" class="archive-tab-btn is-active">
+                            <span class="tab-code">02</span>
+                            <span class="tab-name">ARMOURY</span>
+                        </a>
+                        <a href="hanger.html" class="archive-tab-btn">
+                            <span class="tab-code">03</span>
+                            <span class="tab-name">HANGER</span>
+                        </a>
+                    </div>
+
+                    <div class="archive-filter-panel">
+                        <div class="filter-group">
+                            <label for="filter-country">COUNTRY</label>
+                            <select id="filter-country" class="archive-select">
+                                <option value="all">ALL COUNTRIES</option>
+                                <option value="india">INDIA</option>
+                                <option value="russia">RUSSIA</option>
+                                <option value="ukraine">UKRAINE</option>
+                                <option value="uk">UNITED KINGDOM</option>
+                            </select>
                         </div>
-                        <div class="model-gallery">
-                            <div class="model-gallery-slide">
-                                <img
-                                    src="wip.png"
-                                    alt="AK 203i 5th Rajput Regiment"
-                                >
+
+                        <div class="filter-group">
+                            <label for="filter-line">LINE</label>
+                            <select id="filter-line" class="archive-select">
+                                <option value="all">ALL LINES</option>
+                                <option value="silver">SILVER LINE</option>
+                                <option value="gold">GOLD LINE</option>
+                                <option value="black">BLACK LINE</option>
+                            </select>
+                        </div>
+
+                        <button id="filter-reset-btn" class="archive-reset-btn" type="button" onclick="resetFilters()">RESET</button>
+                    </div>
+                </div>
+
+                <!-- 3-COLUMN PRODUCT GRID -->
+                <div class="shop-product-grid">
+
+                    <!-- AK 203i — 5th Rajput Regiment — GOLD LINE -->
+                    <div class="shop-product-card" data-country="india" data-line="gold">
+                        <div class="product-line-stripe stripe-gold"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="AK 203i"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-gold">GOLD LINE</div>
+                            <h4 class="product-title">AK 203i (1:1)</h4>
+                            <p class="product-spec">5th Rajput Regiment — Jul 2026</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£285.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK 203i 5th Rajput (Gold Line)', 285.00, 'Gold Line')">ADD TO CART</button>
                             </div>
                         </div>
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-                        <div class="model-item-content">
-                            <div class="model-item-description">
-                                <p>
-                                    Product information
-                                    will be added here.
-                                </p>
-                                
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
+                    </div>
+
+                    <!-- 1A1 SLR — 2nd Rajputana Rifles — SILVER LINE -->
+                    <div class="shop-product-card" data-country="india" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="1A1 SLR"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">1A1 SLR (1:1)</h4>
+                            <p class="product-spec">2nd Rajputana Rifles — Jun 1999</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£220.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('1A1 SLR 2nd Rajputana (Silver Line)', 220.00, 'Silver Line')">ADD TO CART</button>
                             </div>
                         </div>
-                    </article>
-                    <!-- NEW: 1A1 SLR -->
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-                        <div class="model-item-header">
-                            <h3 class="model-item-title">
-                                1A1 SLR 2nd Rajputana Rifles [Jun 1999]
-                            </h3>
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-                        </div>
-                        <div class="model-gallery">
-                            <div class="model-gallery-slide">
-                                <img
-                                    src="wip.png"
-                                    alt="1A1 SLR 2nd Rajputana Rifles"
-                                >
+                    </div>
+
+                    <!-- L1A1 — 1st Bn Royal Regiment of Fusiliers — SILVER LINE -->
+                    <div class="shop-product-card" data-country="uk" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="L1A1"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">L1A1 (1:1)</h4>
+                            <p class="product-spec">1st Battalion Royal Regiment of Fusiliers — Jul 1970</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£235.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('L1A1 Royal Fusiliers (Silver Line)', 235.00, 'Silver Line')">ADD TO CART</button>
                             </div>
                         </div>
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-                        <div class="model-item-content">
-                            <div class="model-item-description">
-                                <p>
-                                    Product information
-                                    will be added here.
-                                </p>
-                                
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
+                    </div>
+
+                    <!-- AK105 — TsSN FSB Alpha Group — SILVER LINE -->
+                    <div class="shop-product-card" data-country="russia" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="AK105"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">AK105 (1:1)</h4>
+                            <p class="product-spec">TsSN FSB Alpha Group — Oct 2008</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£210.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK105 FSB Alpha (Silver Line)', 210.00, 'Silver Line')">ADD TO CART</button>
                             </div>
                         </div>
-                    </article>
-                    <!-- NEW: L1A1 -->
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-                        <div class="model-item-header">
-                            <h3 class="model-item-title">
-                                L1A1 1st Battalion Royal Regiment of Fusiliers [Jul 1970]
-                            </h3>
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-                        </div>
-                        <div class="model-gallery">
-                            <div class="model-gallery-slide">
-                                <img
-                                    src="wip.png"
-                                    alt="L1A1 1st Battalion Royal Regiment of Fusiliers"
-                                >
+                    </div>
+
+                    <!-- AK74M — 76th Guards Air Assault Division — GOLD LINE -->
+                    <div class="shop-product-card" data-country="russia" data-line="gold">
+                        <div class="product-line-stripe stripe-gold"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="AK74M 76th Guards"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-gold">GOLD LINE</div>
+                            <h4 class="product-title">AK74M (1:1)</h4>
+                            <p class="product-spec">76th Guards Air Assault Division — Dec 2023</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£270.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK74M 76th Guards (Gold Line)', 270.00, 'Gold Line')">ADD TO CART</button>
                             </div>
                         </div>
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-                        <div class="model-item-content">
-                            <div class="model-item-description">
-                                <p>
-                                    Product information
-                                    will be added here.
-                                </p>
-                                
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
+                    </div>
+
+                    <!-- AK74M — 82nd Air Assault Brigade — SILVER LINE -->
+                    <div class="shop-product-card" data-country="ukraine" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="AK74M 82nd Air Assault"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">AK74M (1:1)</h4>
+                            <p class="product-spec">82nd Air Assault Brigade — Dec 2023</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£220.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK74M 82nd Air Assault (Silver Line)', 220.00, 'Silver Line')">ADD TO CART</button>
                             </div>
                         </div>
-                    </article>
-                    <!-- NEW: AK105 -->
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-                        <div class="model-item-header">
-                            <h3 class="model-item-title">
-                                AK105 TsSN FSB Alpha Group [Oct 2008]
-                            </h3>
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-                        </div>
-                        <div class="model-gallery">
-                            <div class="model-gallery-slide">
-                                <img
-                                    src="wip.png"
-                                    alt="AK105 TsSN FSB Alpha Group"
-                                >
+                    </div>
+
+                    <!-- GSH-30-1 Autocannon — BLACK LINE -->
+                    <div class="shop-product-card" data-country="russia" data-line="black">
+                        <div class="product-line-stripe stripe-black"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="GSH-30-1 Autocannon"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-black">BLACK LINE</div>
+                            <h4 class="product-title">GSH-30-1 Autocannon (1:1)</h4>
+                            <p class="product-spec">30mm Aircraft Gun Full Metal Display Replica</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£450.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('GSH-30-1 Autocannon 1:1', 450.00, 'Black Line')">ADD TO CART</button>
                             </div>
                         </div>
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-                        <div class="model-item-content">
-                            <div class="model-item-description">
-                                <p>
-                                    Product information
-                                    will be added here.
-                                </p>
-                                
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
+                    </div>
+
+                    <!-- R-73 Seeker Head Section — GOLD LINE -->
+                    <div class="shop-product-card" data-country="india" data-line="gold">
+                        <div class="product-line-stripe stripe-gold"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="R-73 Seeker Head"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-gold">GOLD LINE</div>
+                            <h4 class="product-title">R-73 Seeker Head Section</h4>
+                            <p class="product-spec">1:1 Museum Grade Air-to-Air Ordnance Section</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£320.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('R-73 Seeker Head 1:1', 320.00, 'Gold Line')">ADD TO CART</button>
                             </div>
                         </div>
-                    </article>
-                    <!-- NEW: AK74M (76th Guards) -->
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-                        <div class="model-item-header">
-                            <h3 class="model-item-title">
-                                AK74M 76th Guards Air Assault Division [Dec 2023]
-                            </h3>
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-                        </div>
-                        <div class="model-gallery">
-                            <div class="model-gallery-slide">
-                                <img
-                                    src="wip.png"
-                                    alt="AK74M 76th Guards Air Assault Division"
-                                >
+                    </div>
+
+                    <!-- R-27R Missile Body — SILVER LINE -->
+                    <div class="shop-product-card" data-country="ukraine" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="R-27R Missile Casing"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">R-27R Missile Display Body</h4>
+                            <p class="product-spec">1:1 Precision Fabricated Missile Casing</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£280.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('R-27R Missile Body 1:1', 280.00, 'Silver Line')">ADD TO CART</button>
                             </div>
                         </div>
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-                        <div class="model-item-content">
-                            <div class="model-item-description">
-                                <p>
-                                    Product information
-                                    will be added here.
-                                </p>
-                                
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- NEW: AK74M (82nd Air Assault) -->
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-                        <div class="model-item-header">
-                            <h3 class="model-item-title">
-                                AK74M 82nd Air Assault Brigade [Dec 2023]
-                            </h3>
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-                        </div>
-                        <div class="model-gallery">
-                            <div class="model-gallery-slide">
-                                <img
-                                    src="wip.png"
-                                    alt="AK74M 82nd Air Assault Brigade"
-                                >
-                            </div>
-                        </div>
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-                        <div class="model-item-content">
-                            <div class="model-item-description">
-                                <p>
-                                    Product information
-                                    will be added here.
-                                </p>
-                                
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
+
                 </div>
             </div>
+        </section>
+    </main>
+
+    <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>ACQUISITION CART</h3>
+            <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+        </div>
+    </div>
+    <div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="brand footer-brand"><img src="logo.png" alt="Raketa Dynamics"></a>
+                <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="supply.html">Supply</a>
+                <a href="models.html">Models</a>
+                <a href="armoury.html">Armoury</a>
+                <a href="hanger.html">Hanger</a>
+                <a href="archive.html">Collection Archive</a>
+                <a href="releases.html">Updates</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="lines.html">Lines</a>
+            </div>
+            <div class="footer-contact">
+                <span>CONTACT</span>
+                <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>© 2026 Raketa Dynamics</span>
+            <span>Berkshire, United Kingdom</span>
+        </div>
+    </footer>
+
+    <script src="hero-slideshow.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        function applyFilters() {
+            const selectedCountry = document.getElementById('filter-country').value;
+            const selectedLine = document.getElementById('filter-line').value;
+
+            document.querySelectorAll('.shop-product-card').forEach(card => {
+                const cCountry = card.dataset.country;
+                const cLine = card.dataset.line;
+                const matchCountry = (selectedCountry === 'all' || selectedCountry === cCountry);
+                const matchLine = (selectedLine === 'all' || selectedLine === cLine);
+
+                card.style.display = (matchCountry && matchLine) ? 'flex' : 'none';
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-country').value = 'all';
+            document.getElementById('filter-line').value = 'all';
+            applyFilters();
+        }
+
+        document.getElementById('filter-country').addEventListener('change', applyFilters);
+        document.getElementById('filter-line').addEventListener('change', applyFilters);
+    </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Line System — Raketa Dynamics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+
+    <!-- GLOBAL HEADER -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Raketa Dynamics">
+            </a>
+
+            <nav class="site-navigation" aria-label="Main navigation">
+                <a href="index.html" class="site-navigation-link">HOME</a>
+
+                <div class="site-navigation-item site-navigation-supply">
+                    <a href="supply.html" class="site-navigation-link">SUPPLY</a>
+                    <div class="supply-dropdown">
+                        <a href="supply.html#models" class="dropdown-navigation-link">MODELS</a>
+                        <a href="supply.html#armoury" class="dropdown-navigation-link">ARMOURY</a>
+                        <a href="supply.html#hanger" class="dropdown-navigation-link">HANGER</a>
+                    </div>
+                </div>
+
+                <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
+
+                <div class="site-navigation-item site-navigation-updates">
+                    <a href="releases.html" class="site-navigation-link">UPDATES</a>
+                    <div class="updates-dropdown">
+                        <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                        <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
+                        <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
+                    </div>
+                </div>
+
+                <a href="lines.html" class="site-navigation-link active">LINES</a>
+
+                <button class="nav-cart-btn" onclick="toggleCart()">
+                    CART (<span id="cart-counter">0</span>)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="page-hero-slideshow">
+                <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+                <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
+            </div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <h1>The Line System</h1>
+                <p class="large-text">
+                    Official classification hierarchy and production tiers for Raketa Dynamics scale models, cockpits, and replicas.
+                </p>
+            </div>
+            <div class="page-hero-dots">
+                <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+                <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
+            </div>
+        </section>
+
+        <!-- OFFICIAL LINES SPECIFICATION -->
+        <section class="lines-spec-section">
+            <div class="container">
+                <div class="lines-document-box">
+                    
+                    <div class="lines-doc-header">
+                        <span class="lines-doc-brand">RAKETA DYNAMICS</span>
+                        <span class="lines-doc-class">PRODUCTION LINE CLASSIFICATION</span>
+                    </div>
+
+                    <!-- 1. SILVER LINE -->
+                    <div class="line-spec-row line-silver-row">
+                        <div class="line-spec-title title-silver">SILVER LINE</div>
+                        <div class="line-spec-desc">
+                            BASE MODELS WITH BASIC FEATURES, OPEN CANOPY AND BASIC ARMAMENT OPTIONS.
+                        </div>
+                    </div>
+
+                    <!-- 2. SQUADRON LINE -->
+                    <div class="line-spec-row line-squadron-row">
+                        <div class="line-spec-title title-squadron">SQUADRON LINE</div>
+                        <div class="line-spec-desc">
+                            BASE MODELS WITH BASIC FEATURES, OPEN CANOPY AND BASIC ARMAMENT OPTIONS.<br>
+                            <strong>AIRFORCE SALES ONLY.</strong>
+                        </div>
+                    </div>
+
+                    <!-- 3. GOLD LINE -->
+                    <div class="line-spec-row line-gold-row">
+                        <div class="line-spec-title title-gold">GOLD LINE</div>
+                        <div class="line-spec-desc">
+                            ADVANCE MODELS WITH MORE FEATURES, OPEN CANOPY AND MORE ARMAMENT OPTIONS. OPTION TO OPEN PANEL AND VIEW BAYS.
+                        </div>
+                    </div>
+
+                    <!-- 4. WHITE LINE -->
+                    <div class="line-spec-row line-white-row">
+                        <div class="line-spec-title title-white">WHITE LINE</div>
+                        <div class="line-spec-desc">
+                            ULTIMATE MODELS WITH ADVANCED FEATURES, OPEN CANOPY AND ALL ARMAMENT OPTIONS. OPTION TO OPEN PANEL, VIEW ENGINE AND BAYS. LARGE BASE INCLUDED AS WELL AS ADDITIONAL EQUIPMENT.
+                        </div>
+                    </div>
+
+                    <!-- 5. BLACK LINE -->
+                    <div class="line-spec-row line-black-row">
+                        <div class="line-spec-title title-black">black LINE</div>
+                        <div class="line-spec-desc">
+                            ULTIMATE MODELS WITH ADVANCED AND EXPERIMENTAL FEATURES. EXCLUSIVE.
+                        </div>
+                    </div>
+
+                    <!-- DOC FOOTER -->
+                    <div class="lines-doc-footer">
+                        <span>This is not to be changed without prior authorization</span>
+                        <span class="signature-mark">R.D. Command</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>ACQUISITION CART</h3>
+            <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items-container">
+            <p class="cart-empty-msg">Your cart is currently empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="cart-checkout-btn" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+        </div>
+    </div>
+    <div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="brand footer-brand">
+                    <img src="logo.png" alt="Raketa Dynamics">
+                </a>
+                <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="supply.html">Supply</a>
+                <a href="archive.html">Collection Archive</a>
+                <a href="releases.html">Releases</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="lines.html">Lines</a>
+            </div>
+            <div class="footer-contact">
+                <span>CONTACT</span>
+                <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>© 2026 Raketa Dynamics</span>
+            <span>Berkshire, United Kingdom</span>
+        </div>
+    </footer>
+
+    <script src="hero-slideshow.js"></script>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('raketa_cart') || '[]');
+
+        function updateCartUI() {
+            const counter = document.getElementById('cart-counter');
+            if (counter) counter.innerText = cart.length;
+            const container = document.getElementById('cart-items');
+            const totalElem = document.getElementById('cart-total');
+            if (!container) return;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="cart-empty-msg">Your cart is currently empty.</p>';
+                if (totalElem) totalElem.innerText = '£0.00';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map((item, idx) => {
+                total += item.price;
+                return `
+                    <div class="cart-item-row">
+                        <div>
+                            <h4>${item.name}</h4>
+                            <span class="cart-item-meta">${item.line} — £${item.price.toFixed(2)}</span>
+                        </div>
+                        <button class="cart-remove-btn" onclick="removeFromCart(${idx})">REMOVE</button>
+                    </div>
+                `;
+            }).join('');
+
+            if (totalElem) totalElem.innerText = `£${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('is-open');
+            document.getElementById('cart-backdrop').classList.toggle('is-open');
+        }
+
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            localStorage.setItem('raketa_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        updateCartUI();
+    </script>
+</body>
+</html>

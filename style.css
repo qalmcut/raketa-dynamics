@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Russo+One&family=Share+Tech+Mono&display=swap');
 /* ========================================================= 
    RAKETA DYNAMICS 
    MAIN WEBSITE STYLESHEET 
@@ -372,7 +373,7 @@ section {
  
     position: absolute; 
  
-    top: calc(100% + 13px); 
+    top: 100%; 
  
     left: 50%; 
  
@@ -394,7 +395,7 @@ section {
  
     min-width: 110px; 
  
-    padding: 2px 8px 8px; 
+    padding: 15px 8px 8px; 
  
     opacity: 0; 
  
@@ -410,15 +411,15 @@ section {
  
  
 /* ========================================================= 
-   OPEN ALL DROPDOWNS WHEN HOVERING THE HEADER
+   OPEN ONLY THE DROPDOWN YOU'RE HOVERING
 ========================================================= */ 
  
-.site-header:hover .supply-dropdown, 
-.site-header:hover .updates-dropdown, 
-.site-header:hover .about-dropdown, 
-.site-header:focus-within .supply-dropdown, 
-.site-header:focus-within .updates-dropdown, 
-.site-header:focus-within .about-dropdown { 
+.site-navigation-supply:hover .supply-dropdown, 
+.site-navigation-updates:hover .updates-dropdown, 
+.site-navigation-about:hover .about-dropdown, 
+.site-navigation-supply:focus-within .supply-dropdown, 
+.site-navigation-updates:focus-within .updates-dropdown, 
+.site-navigation-about:focus-within .about-dropdown { 
  
     opacity: 1; 
  
@@ -4936,4 +4937,1289 @@ button:focus-visible {
 
     }
 
+}
+
+/* ==========================================================================
+   PAGE HERO SLIDESHOW & TYPOGRAPHY ADJUSTMENTS
+   ========================================================================== */
+
+/* Completely hide the small yellow kickers across all pages */
+.section-kicker,
+.supply-card-kicker,
+.hero-kicker {
+    display: none !important;
+}
+
+/* Page Hero Container */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 130px 0 60px; /* Refined compact spacing */
+}
+
+/* 1. Slideshow background container */
+.page-hero-slideshow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* 2. Slide images */
+.hero-slide-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.hero-slide-image.is-active {
+    opacity: 0.55;
+}
+
+/* 3. Dark editorial overlay */
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(5, 6, 5, 0.85) 0%,
+        rgba(5, 6, 5, 0.45) 50%,
+        rgba(5, 6, 5, 0.15) 100%
+    ),
+    linear-gradient(
+        to bottom,
+        rgba(5, 6, 5, 0.10) 0%,
+        rgba(5, 6, 5, 0.70) 100%
+    );
+}
+
+/* 4. Hero Content & Soviet Program Typography */
+.page-hero > *:not(.page-hero-slideshow):not(.page-hero-overlay):not(.page-hero-dots) {
+    position: relative;
+    z-index: 3;
+}
+
+.page-hero h1 {
+    font-family: 'Soviet Program', 'Space Grotesk', 'Rajdhani', sans-serif;
+    font-size: clamp(36px, 4.2vw, 56px); /* Scaled down to prevent oversized text */
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+}
+
+.page-hero .large-text {
+    font-family: 'Soviet Program', 'Space Grotesk', sans-serif;
+    font-size: clamp(15px, 1.2vw, 18px); /* Natural, proportional reading size */
+    line-height: 1.6;
+    max-width: 640px;
+    color: var(--text-muted, #a0a5a0);
+}
+
+/* 5. Slideshow navigation dots */
+.page-hero-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 4;
+}
+
+.page-hero-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.2));
+    padding: 0;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.2s ease);
+}
+
+.page-hero-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.page-hero-dot.is-active {
+    background: var(--accent, #d4af37);
+    border-color: var(--accent, #d4af37);
+    transform: scale(1.2);
+}
+
+/* ==========================================================================
+   SOVIET / AVIATION TYPOGRAPHY (Google Fonts: Russo One & Chakra Petch)
+   ========================================================================== */
+
+/* Supply Card Titles (MODELS, ARMOURY, HANGER) */
+.supply-card h2,
+.supply-card h3,
+.supply-card-title,
+.archive-division-card h2 {
+    font-family: 'Russo One', sans-serif !important;
+    font-size: clamp(32px, 5vw, 64px) !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Page Hero Headings (Supply., Collection Archive., Models.) */
+.page-hero h1 {
+    font-family: 'Russo One', sans-serif !important;
+    font-size: clamp(36px, 4.5vw, 54px) !important;
+    letter-spacing: 0.02em;
+}
+
+/* Descriptions & Subtexts */
+.page-hero .large-text,
+.supply-card p,
+.supply-card-description {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+}
+
+/* Numbers (01, 02, 03) and Links */
+.supply-card-number,
+.supply-card-link {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   SUPPLY PAGE — 3-COLUMN CARDS (Larger, Clearer Description)
+   ========================================================================== */
+.supply-section {
+    padding: 10px 0 40px !important;
+}
+
+.supply-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    max-width: var(--max-width, 1320px);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.supply-card {
+    position: relative;
+    display: block !important;
+    width: 100% !important;
+    min-height: 460px !important;
+    height: 54vh;
+    max-height: 520px;
+    overflow: hidden;
+    background: #050605;
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.15));
+    text-decoration: none;
+    padding: 26px 22px !important;
+    transition: transform var(--transition-fast, 0.25s ease), border-color var(--transition-fast, 0.25s ease);
+}
+
+.supply-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent, #d4af37);
+}
+
+/* Background Watermark (Shifted slightly higher for extra clearance) */
+.supply-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    pointer-events: none;
+}
+
+.supply-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 36%; /* Sits higher up behind the open area */
+    opacity: 0.22;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.supply-card:hover .supply-card-image img {
+    transform: scale(1.05);
+    opacity: 0.35;
+}
+
+.supply-card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(5, 6, 5, 0.2) 0%,
+        rgba(5, 6, 5, 0.4) 35%,
+        rgba(5, 6, 5, 0.96) 75%
+    );
+    pointer-events: none;
+}
+
+.supply-card-content {
+    position: relative;
+    z-index: 2;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+/* TOP: Number (01) */
+.supply-card-number {
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 12px;
+    color: var(--accent, #d4af37);
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* TOP: Title (MODELS, ARMOURY, HANGER) */
+.supply-card h2,
+.supply-card h3,
+.supply-card-title {
+    font-family: 'Russo One', sans-serif !important;
+    font-size: clamp(24px, 2vw, 32px) !important;
+    color: var(--text, #eeeDE7);
+    margin: 0 !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+/* BOTTOM: Description (Bigger, High-Contrast & Clear) */
+.supply-card p,
+.supply-card-description {
+    margin-top: auto !important; /* Anchors to the bottom */
+    font-family: 'Chakra Petch', sans-serif !important;
+    font-size: 14px !important; /* Increased from 12px for easy reading */
+    font-weight: 500;
+    line-height: 1.55;
+    color: #dde2dd !important; /* Brighter high-contrast white/silver */
+    margin-bottom: 16px !important;
+    max-width: 100%;
+}
+
+/* BOTTOM: Link Button */
+.supply-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 12px;
+    color: var(--accent, #d4af37);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.supply-card:hover .supply-card-link {
+    gap: 12px;
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .supply-container {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+    }
+    .supply-card {
+        min-height: 380px !important;
+        height: auto;
+    }
+}
+
+/* ==========================================================================
+   COLLECTION ARCHIVE — TACTICAL TABS, FILTERS & TECH TREE
+   ========================================================================== */
+
+.archive-dashboard-section {
+    padding: 30px 0 80px;
+    background: #050605;
+}
+
+/* Control Bar */
+.archive-control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-strong, rgba(255, 255, 255, 0.15));
+    margin-bottom: 36px;
+}
+
+/* 3 Tabs (Folder / Tactical style from sketch) */
+.archive-tabs-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.archive-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
+    color: var(--text-muted, #a0a5a0);
+    padding: 12px 24px;
+    cursor: pointer;
+    font-family: 'Russo One', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+}
+
+.archive-tab-btn .tab-code {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent, #d4af37);
+}
+
+.archive-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.archive-tab-btn.is-active {
+    background: #0d100d;
+    border-color: var(--accent, #d4af37);
+    color: #ffffff;
+    border-bottom: 2px solid var(--accent, #d4af37);
+}
+
+/* Filter Panel (Right side) */
+.archive-filter-panel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-group label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent, #d4af37);
+    letter-spacing: 0.1em;
+}
+
+.archive-select {
+    background: #0a0c0a;
+    color: #eeeDE7;
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.2));
+    padding: 8px 12px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    outline: none;
+}
+
+.archive-select:focus {
+    border-color: var(--accent, #d4af37);
+}
+
+.archive-reset-btn {
+    align-self: flex-end;
+    background: transparent;
+    border: 1px solid var(--line, rgba(255, 255, 255, 0.2));
+    color: var(--text-muted, #a0a5a0);
+    padding: 8px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.archive-reset-btn:hover {
+    border-color: var(--accent, #d4af37);
+    color: #ffffff;
+}
+
+/* Tab Panes */
+.archive-tab-pane {
+    display: none;
+}
+
+.archive-tab-pane.is-active {
+    display: block;
+    animation: fadeInTab 0.35s ease;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.techtree-header {
+    margin-bottom: 28px;
+}
+
+.techtree-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent, #d4af37);
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.techtree-header h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+}
+
+/* Branching Tech Tree Visual Layout */
+.archive-tree-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-root-box {
+    background: #0e120e;
+    border: 1px solid var(--accent, #d4af37);
+    padding: 14px 28px;
+    text-align: center;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tree-node-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    letter-spacing: 0.06em;
+}
+
+.tree-node-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted, #a0a5a0);
+}
+
+.tree-connector-v {
+    width: 2px;
+    height: 32px;
+    background: var(--line-strong, rgba(255, 255, 255, 0.3));
+}
+
+.tree-split-node {
+    background: #080a08;
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.25));
+    padding: 8px 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--accent, #d4af37);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.tree-branch-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.tree-branch-col {
+    position: relative;
+    border-top: 2px solid var(--line-strong, rgba(255, 255, 255, 0.2));
+    padding-top: 20px;
+}
+
+.tree-card-list,
+.archive-card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.archive-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+/* Individual Node Cards */
+.archive-node-card {
+    background: #090c09;
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.15));
+    padding: 20px;
+    transition: all 0.25s ease;
+}
+
+.archive-node-card:hover {
+    border-color: var(--accent, #d4af37);
+    transform: translateY(-3px);
+    background: #0d120d;
+}
+
+.archive-node-card h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #eeeDE7;
+    margin: 8px 0 6px;
+    letter-spacing: 0.04em;
+}
+
+.node-meta {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12.5px;
+    color: var(--text-muted, #a0a5a0);
+    line-height: 1.4;
+}
+
+/* Line Rarity Badges (Silver, Gold, Black, White) */
+.node-line-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.badge-silver {
+    background: rgba(180, 185, 190, 0.15);
+    border: 1px solid #b0b5ba;
+    color: #d0d5da;
+}
+
+.badge-gold {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid #d4af37;
+    color: #e5c358;
+}
+
+.badge-black {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #707570;
+    color: #ffffff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+.badge-white {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+/* Responsive on Mobile */
+@media (max-width: 900px) {
+    .archive-control-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .tree-branch-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   SUPPLY SHOP — 3-COLUMN PRODUCTS & 5-LINE SYSTEM STYLING
+   ========================================================================== */
+
+/* Cart Button in Header */
+.nav-cart-btn {
+    background: #0d120d;
+    border: 1px solid var(--accent, #d4af37);
+    color: var(--accent, #d4af37);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+}
+
+.nav-cart-btn:hover {
+    background: var(--accent, #d4af37);
+    color: #050605;
+}
+
+/* Sub-navigation Pills (Aircraft / Helicopters / Ground) */
+.sub-nav-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.sub-nav-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
+    color: var(--text-muted, #a0a5a0);
+    padding: 6px 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.sub-nav-pill:hover {
+    border-color: var(--accent, #d4af37);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.shop-subsection {
+    margin-bottom: 50px;
+}
+
+.subsection-header h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+    border-left: 3px solid var(--accent, #d4af37);
+    padding-left: 12px;
+}
+
+/* 3 Side-by-Side Product Cards Grid (Matching Attachment 2) */
+.shop-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.shop-product-card {
+    position: relative;
+    background: #080a08;
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.15));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.shop-product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent, #d4af37);
+}
+
+/* Top Line Color Banner */
+.product-line-stripe {
+    height: 5px;
+    width: 100%;
+}
+
+.stripe-silver { background: #b0b5ba; }
+.stripe-squadron { background: #28a7b0; }
+.stripe-gold { background: #d4af37; }
+.stripe-white { background: #ffffff; }
+.stripe-black { background: #404540; border-bottom: 1px solid #707570; }
+
+.product-img-box {
+    background: #000000;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    overflow: hidden;
+}
+
+.product-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.product-info-box {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-line-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.tag-silver { color: #b0b5ba; }
+.tag-squadron { color: #28a7b0; }
+.tag-gold { color: #d4af37; }
+.tag-white { color: #ffffff; }
+.tag-black { color: #ffffff; }
+
+.product-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #eeeDE7;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.02em;
+}
+
+.product-spec {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12.5px;
+    color: var(--text-muted, #a0a5a0);
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.product-buy-row {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-price {
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.btn-add-cart {
+    background: transparent;
+    border: 1px solid var(--accent, #d4af37);
+    color: var(--accent, #d4af37);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+}
+
+.btn-add-cart:hover {
+    background: var(--accent, #d4af37);
+    color: #050605;
+}
+
+/* ==========================================================================
+   OFFICIAL LINES DOCUMENT PAGE (lines.html)
+   ========================================================================== */
+.lines-spec-section {
+    padding: 40px 0 80px;
+    background: #050605;
+}
+
+.lines-document-box {
+    background: #080a08;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 36px 30px;
+}
+
+.lines-doc-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 24px;
+}
+
+.lines-doc-brand {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.lines-doc-class {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--accent, #d4af37);
+    letter-spacing: 0.1em;
+}
+
+.line-spec-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 30px;
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: center;
+}
+
+.line-spec-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    font-style: italic;
+}
+
+.title-silver { color: #b0b5ba; }
+.title-squadron { color: #28a7b0; }
+.title-gold { color: #d4af37; }
+.title-white { color: #ffffff; }
+.title-black { color: #000000; }
+
+.line-black-row {
+    background: #ffffff;
+    color: #000000;
+}
+
+.line-black-row .line-spec-desc {
+    color: #111111;
+}
+
+.line-spec-desc {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    letter-spacing: 0.04em;
+}
+
+.lines-doc-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted, #a0a5a0);
+}
+
+.signature-mark {
+    font-family: 'Russo One', sans-serif;
+    font-style: italic;
+    color: var(--accent, #d4af37);
+}
+
+/* ==========================================================================
+   MINIMALIST SLEEK ACQUISITION CART (Matte Black & Crisp White)
+   ========================================================================== */
+
+.cart-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cart-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 440px;
+    background: #080a08;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -15px 0 35px rgba(0, 0, 0, 0.8);
+}
+
+.cart-drawer.is-open {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background: #0d100d;
+}
+
+.cart-header h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.cart-close-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.cart-close-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.cart-items-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart-item-row {
+    background: #0e120e;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.cart-item-row:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.cart-item-row h4 {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 4px;
+}
+
+.cart-item-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: #a0a5a0;
+    letter-spacing: 0.05em;
+}
+
+.cart-remove-btn {
+    background: transparent;
+    border: none;
+    color: #888d88;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    padding: 6px 10px;
+    transition: color 0.2s ease;
+}
+
+.cart-remove-btn:hover {
+    color: #ff4d4d;
+    text-decoration: underline;
+}
+
+.cart-footer {
+    padding: 24px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: #0d100d;
+}
+
+.cart-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 0.08em;
+}
+
+.cart-total-row span:last-child {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background: #ffffff;
+    color: #050605;
+    border: none;
+    padding: 16px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.cart-checkout-btn:hover {
+    background: #e0e4e0;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15);
+}
+
+.nav-cart-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 6px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-cart-btn:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+/* ==========================================================================
+   SHOP TABS DISPLAY FIX (Hides Inactive Shop Panes)
+   ========================================================================== */
+
+.shop-tab-pane {
+    display: none !important;
+}
+
+.shop-tab-pane.is-active {
+    display: block !important;
+    animation: fadeInShop 0.35s ease;
+}
+
+@keyframes fadeInShop {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   RAKETA DYNAMICS — LUXURY AEROSPACE MINIMALISM (Executive Enterprise Tier)
+   ========================================================================== */
+
+/* 1. Deep Obsidian Base & Hairline Architecture */
+body {
+    background-color: #080908 !important;
+    background-image: none !important;
+    color: #e5e7e5 !important;
+    letter-spacing: -0.01em;
+}
+
+/* 2. Executive Navigation Header */
+.site-header {
+    background: rgba(8, 9, 8, 0.94) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+}
+
+.site-navigation-link {
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.14em !important;
+    color: #8c928c !important;
+    padding: 8px 0 !important;
+    position: relative;
+    transition: color 0.2s ease !important;
+}
+
+.site-navigation-link:hover,
+.site-navigation-link.active {
+    color: #ffffff !important;
+}
+
+/* Minimalist Hairline Active Indicator */
+.site-navigation-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+}
+
+/* 3. Minimalist Studio Product Cards */
+.shop-product-card,
+.archive-node-card,
+.model-card,
+.release-card {
+    background: #0d0f0d !important;
+    border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    border-radius: 0px !important;
+    clip-path: none !important;
+    box-shadow: none !important;
+    transition: border-color 0.25s ease, transform 0.25s ease !important;
+}
+
+.shop-product-card:hover,
+.archive-node-card:hover,
+.model-card:hover,
+.release-card:hover {
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+.product-img-box {
+    background: #090a09 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* 4. Refined Typography & Clean Badges */
+.product-title,
+.subsection-header h3 {
+    font-family: 'Russo One', sans-serif !important;
+    font-size: 17px !important;
+    letter-spacing: 0.04em !important;
+    color: #ffffff !important;
+}
+
+.product-spec {
+    font-family: 'Chakra Petch', sans-serif !important;
+    font-size: 13px !important;
+    color: #929992 !important;
+    line-height: 1.5 !important;
+}
+
+.product-line-tag {
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    padding: 0 !important;
+    margin-bottom: 6px !important;
+}
+
+.product-price {
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* 5. Minimalist Executive Action Buttons */
+.btn-add-cart,
+.button-primary {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 0px !important;
+    clip-path: none !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+    padding: 10px 18px !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-add-cart:hover,
+.button-primary:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+}
+
+/* 6. Clean Minimalist Filter Bar */
+.archive-control-bar {
+    background: #0d0f0d !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 0px !important;
+    clip-path: none !important;
+    padding: 14px 20px !important;
+}
+
+.archive-select {
+    background: #080908 !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #e0e4e0 !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+    border-radius: 0px !important;
+}
+
+.archive-tab-btn {
+    border-radius: 0px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
+    color: #8c928c !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    transition: all 0.2s ease !important;
+}
+
+.archive-tab-btn.is-active,
+.archive-tab-btn:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.sub-nav-pill {
+    border-radius: 0px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #8c928c !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+}
+
+.sub-nav-pill:hover {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   HIDE TAB NUMBERS (Clean "MODELS", "ARMOURY", "HANGER" Tabs)
+   ========================================================================== */
+
+.tab-code {
+    display: none !important;
+}
+
+.archive-tab-btn {
+    padding: 10px 22px !important;
+    text-align: center !important;
+    letter-spacing: 0.14em !important;
 }

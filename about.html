@@ -2,396 +2,160 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Learn about Raketa Dynamics and the approach behind its highly detailed aircraft replicas."
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Raketa Dynamics and the approach behind its highly detailed aircraft replicas.">
     <title>Raketa Dynamics | About</title>
-
     <link rel="stylesheet" href="style.css">
-
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-====================================================== -->
 <!-- =====================================================
      FIXED HEADER
 ====================================================== -->
-
 <header class="site-header">
-
     <div class="nav-container">
-
-
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <img
-                src="logo.png"
-                alt="Raketa Dynamics"
-            >
-
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="Raketa Dynamics">
         </a>
 
-
-        <!-- MAIN NAVIGATION -->
-
-        <nav
-            class="site-navigation"
-            aria-label="Main navigation"
-        >
-
-
-            <!-- HOME -->
-
-            <a
-                href="index.html"
-                class="site-navigation-link"
-            >
-                HOME
-            </a>
-
-
-            <!-- =================================================
-                 SUPPLY
-            ================================================== -->
+        <nav class="site-navigation" aria-label="Main navigation">
+            <a href="index.html" class="site-navigation-link">HOME</a>
 
             <div class="site-navigation-item site-navigation-supply">
-
-                <a
-                    href="supply.html"
-                    class="site-navigation-link"
-                >
-                    SUPPLY
-                </a>
-
-
-                <!-- SUPPLY DROPDOWN -->
-
+                <a href="supply.html" class="site-navigation-link">SUPPLY</a>
                 <div class="supply-dropdown">
-
-                    <a
-                        href="models.html"
-                        class="dropdown-navigation-link"
-                    >
-                        MODELS
-                    </a>
-
-                    <a
-                        href="armoury.html"
-                        class="dropdown-navigation-link"
-                    >
-                        ARMOURY
-                    </a>
-
-                    <a
-                        href="hanger.html"
-                        class="dropdown-navigation-link"
-                    >
-                        HANGER
-                    </a>
-
+                    <a href="models.html" class="dropdown-navigation-link">MODELS</a>
+                    <a href="armoury.html" class="dropdown-navigation-link">ARMOURY</a>
+                    <a href="hanger.html" class="dropdown-navigation-link">HANGER</a>
                 </div>
-
             </div>
 
-
-            <!-- =================================================
-                 COLLECTION ARCHIVE
-            ================================================== -->
-
-            <a
-                href="archive.html"
-                class="site-navigation-link"
-            >
-                COLLECTION ARCHIVE
-            </a>
-
-
-            <!-- =================================================
-                 UPDATES
-            ================================================== -->
+            <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
 
             <div class="site-navigation-item site-navigation-updates">
-
-                <a
-                    href="releases.html"
-                    class="site-navigation-link"
-                >
-                    UPDATES
-                </a>
-
-
-                <!-- UPDATES DROPDOWN -->
-
+                <a href="releases.html" class="site-navigation-link">UPDATES</a>
                 <div class="updates-dropdown">
-
-                    <a
-                        href="releases.html"
-                        class="dropdown-navigation-link"
-                    >
-                        RELEASES
-                    </a>
-
+                    <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                    <a href="about.html" class="dropdown-navigation-link active">ABOUT</a>
+                    <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
                 </div>
-
             </div>
 
+            <a href="lines.html" class="site-navigation-link">LINES</a>
 
-            <!-- =================================================
-                 ABOUT
-            ================================================== -->
-
-            <div class="site-navigation-item site-navigation-about">
-
-                <a
-                    href="about.html"
-                    class="site-navigation-link"
-                >
-                    ABOUT
-                </a>
-
-
-                <!-- ABOUT DROPDOWN -->
-
-                <div class="about-dropdown">
-
-                    <a
-                        href="contact.html"
-                        class="dropdown-navigation-link"
-                    >
-                        CONTACT
-                    </a>
-
-                </div>
-
-            </div>
-
-
+            <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                CART (<span id="cart-counter">0</span>)
+            </button>
         </nav>
-
     </div>
-
 </header>
 
 <!-- =====================================================
      MAIN
 ====================================================== -->
-
 <main>
 
-
-<!-- =====================================================
-     ABOUT HERO
-====================================================== -->
-
-<section class="page-hero">
-
-    <div class="container">
-
-        <span class="section-kicker">
-            RAKETA DYNAMICS / ABOUT
-        </span>
-
-        <h1>
-            Built around the aircraft.
-        </h1>
-
-        <p class="large-text">
-            Raketa Dynamics creates highly detailed aircraft
-            replicas for collectors and aviation enthusiasts.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     THE APPROACH
-====================================================== -->
-
-<section class="about-section">
-
-    <div class="container">
-
-
-        <div class="about-content">
-
-
-            <span class="section-kicker">
-                THE APPROACH
-            </span>
-
-
-            <h2>
-                Detail beyond the silhouette.
-            </h2>
-
-
-            <p class="large-text">
-                Raketa Dynamics focuses on the details that make an
-                aircraft recognisable to people who know it closely.
-            </p>
-
-
-            <p>
-                Cockpit reproduction, panel lines, surface treatment,
-                weathering, markings, configuration and presentation
-                all contribute to the finished collector piece.
-            </p>
-
-
-            <p>
-                The models are intended for serious collectors,
-                aviation enthusiasts and people with a particular
-                connection to the aircraft represented.
-            </p>
-
-
+    <!-- ABOUT HERO -->
+    <section class="page-hero">
+        <div class="page-hero-slideshow">
+            <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+            <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
         </div>
+        <div class="page-hero-overlay"></div>
+        <div class="container">
+            <h1>About Raketa Dynamics</h1>
+            <p class="large-text">Precision aerospace replicas and technical aviation projects based in Berkshire, United Kingdom.</p>
+        </div>
+        <div class="page-hero-dots">
+            <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+            <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
+        </div>
+    </section>
 
+    <!-- THE APPROACH -->
+    <section class="about-section" style="padding: 60px 0 100px;">
+        <div class="container">
+            <div class="about-content" style="max-width: 800px;">
+                <h2 style="font-family: 'Russo One', sans-serif; font-size: 32px; margin-bottom: 20px; color: #ffffff;">
+                    Detail beyond the silhouette.
+                </h2>
 
-    </div>
+                <p class="large-text" style="font-size: 18px; line-height: 1.6; color: #eeeDE7; margin-bottom: 18px;">
+                    Raketa Dynamics focuses on the details that make an aircraft recognisable to people who know it closely.
+                </p>
 
-</section>
+                <p style="font-family: 'Chakra Petch', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-muted, #a0a5a0); margin-bottom: 16px;">
+                    Cockpit reproduction, panel lines, surface treatment, weathering, markings, configuration and presentation all contribute to the finished collector piece.
+                </p>
 
+                <p style="font-family: 'Chakra Petch', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-muted, #a0a5a0);">
+                    The models are intended for serious collectors, aviation enthusiasts and people with a particular connection to the aircraft represented.
+                </p>
+            </div>
+        </div>
+    </section>
 
 </main>
-
 
 <!-- =====================================================
      FOOTER
 ====================================================== -->
-
 <footer class="site-footer">
-
-
     <div class="container footer-grid">
-
-
-        <!-- FOOTER BRAND -->
-
         <div>
-
-            <a
-                href="index.html"
-                class="brand footer-brand"
-            >
-
-                <img
-                    src="logo.png"
-                    alt="Raketa Dynamics"
-                >
-
+            <a href="index.html" class="brand footer-brand">
+                <img src="logo.png" alt="Raketa Dynamics">
             </a>
-
-
-            <p>
-                Highly detailed aircraft replicas for collectors
-                and aviation enthusiasts.
-            </p>
-
+            <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
         </div>
-
-
-        <!-- FOOTER LINKS -->
 
         <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="supply.html">
-                Supply
-            </a>
-
-            <a href="models.html">
-                Models
-            </a>
-
-            <a href="armoury.html">
-                Armoury
-            </a>
-
-            <a href="hanger.html">
-                Hanger
-            </a>
-
-            <a href="archive.html">
-                Collection Archive
-            </a>
-
-            <a href="releases.html">
-                Updates
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="supply.html">Supply</a>
+            <a href="models.html">Models</a>
+            <a href="armoury.html">Armoury</a>
+            <a href="hanger.html">Hanger</a>
+            <a href="archive.html">Collection Archive</a>
+            <a href="releases.html">Updates</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="lines.html">Lines</a>
         </div>
-
-
-        <!-- FOOTER CONTACT -->
 
         <div class="footer-contact">
-
-            <span>
-                CONTACT
-            </span>
-
-            <a href="mailto:Raketadynamicsmodels@gmail.com">
-                Raketadynamicsmodels@gmail.com
-            </a>
-
+            <span>CONTACT</span>
+            <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
         </div>
-
-
     </div>
-
-
-    <!-- FOOTER BOTTOM -->
 
     <div class="container footer-bottom">
-
-        <span>
-            © 2026 Raketa Dynamics
-        </span>
-
-        <span>
-            Berkshire, United Kingdom
-        </span>
-
+        <span>© 2026 Raketa Dynamics</span>
+        <span>Berkshire, United Kingdom</span>
     </div>
-
-
 </footer>
 
+<!-- SHOPPING CART SLIDE-OUT DRAWER -->
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>ACQUISITION CART</h3>
+        <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>SUBTOTAL</span>
+            <span id="cart-total">£0.00</span>
+        </div>
+        <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+    </div>
+</div>
+<div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
 
+<script src="hero-slideshow.js"></script>
+<script src="cart.js"></script>
 </body>
 
 </html>
